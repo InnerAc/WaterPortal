@@ -6,9 +6,17 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.kit.PathKit;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
+import edu.hhu.portal.controller.ModuleController;
+import edu.hhu.portal.controller.PageController;
 import edu.hhu.portal.controller.TestController;
+import edu.hhu.portal.model.DisplayModule;
+import edu.hhu.portal.model.Files;
+import edu.hhu.portal.model.News;
 
 public class PortalConfig extends JFinalConfig{
 
@@ -20,13 +28,20 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/",TestController.class);
+		me.add("/test",TestController.class);
+		me.add("/module",ModuleController.class);
+		me.add("/",PageController.class);
 	}
 
 	@Override
 	public void configPlugin(Plugins me) {
-		// TODO Auto-generated method stub
-		
+		C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://192.168.218.129/waterportal","root", "anjicun");
+		me.add(cp);
+		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
+		arp.addMapping("DisplayModule", "DM_id", DisplayModule.class);
+		arp.addMapping("News","N_id", News.class);
+		arp.addMapping("Files","F_id" ,Files.class);
+		me.add(arp);
 	}
 
 	@Override
