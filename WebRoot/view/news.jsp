@@ -7,30 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <script src="/static/js/jquery-2.1.4.js"></script>
-<script src="/static/js/myjs/module.js"></script>
-<script src="/static/js/myjs/index.js"></script>
-<style type="text/css">
-table{
-	table-layout: fixed;
-}
-td{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-</style>
-<title>首页</title>
+<title>水利新闻</title>
 </head>
 <body>
-	<div style="width:90%;margin:5%;">
-		<div>
-			<h1 style="text-align:center">门户首页</h1>
-		</div>
-		<br><br>
-		<div id="1" class="col-md-4">
-		</div>
-		<div id="130576736" class="col-md-4">
-		</div>
+	<div style="width:80%;margin:10%;">
+	<div>
+		<h1 style="text-align:center">${news.N_title }</h1>
+		<h6 style="text-align:right">${news.N_date }</h6>
+	</div>
+	<div>
+		${news.N_content }
+	</div>
 	</div>
 </body>
 </html>

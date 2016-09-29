@@ -12,6 +12,7 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
 import edu.hhu.portal.controller.ModuleController;
+import edu.hhu.portal.controller.NewsController;
 import edu.hhu.portal.controller.PageController;
 import edu.hhu.portal.controller.TestController;
 import edu.hhu.portal.model.DisplayModule;
@@ -30,6 +31,7 @@ public class PortalConfig extends JFinalConfig{
 	public void configRoute(Routes me) {
 		me.add("/test",TestController.class);
 		me.add("/module",ModuleController.class);
+		me.add("/news",NewsController.class);
 		me.add("/",PageController.class);
 	}
 
