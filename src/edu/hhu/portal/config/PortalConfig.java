@@ -7,6 +7,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.kit.PathKit;
+import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
@@ -23,6 +24,7 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configConstant(Constants me) {
+		PropKit.use("sql.properties");
 		me.setDevMode(true);
 		me.setViewType(ViewType.JSP);
 	}
@@ -37,7 +39,10 @@ public class PortalConfig extends JFinalConfig{
 
 	@Override
 	public void configPlugin(Plugins me) {
-		C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://192.168.218.129/waterportal","root", "anjicun");
+		String sqlurl = PropKit.get("url").trim();
+		String sqluser = PropKit.get("user").trim();
+		String sqlpwd = PropKit.get("pwd").trim();
+		C3p0Plugin cp = new C3p0Plugin(sqlurl,sqluser, sqlpwd);
 		me.add(cp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
 		arp.addMapping("DisplayModule", "DM_id", DisplayModule.class);
