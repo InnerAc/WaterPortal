@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.jfinal.core.Controller;
 
+import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.News;
 
 public class NewsController extends Controller{
@@ -44,6 +45,18 @@ public class NewsController extends Controller{
 	 * 验证首先应该先验证该用户对于这个模块是否拥有
 	 */
 	public void add(){
+		if(getRequest().getMethod().equals("GET")){
+			String dmid = getPara();
+			String dmname = DisplayModule.dao.findNAMEbyID(dmid);
+			String userid = getSessionAttr("userid");
+			if(dmid == null || dmid.equals("")){
+				return;
+			}
+			setAttr("userid", userid);
+			setAttr("dmid", dmid);
+			setAttr("dmname", dmname);
+			render("/view/addNews.jsp");
+		}
 	}
 	
 	/**

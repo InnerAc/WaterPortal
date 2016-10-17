@@ -23,4 +23,14 @@ public class DisplayModule extends Model<DisplayModule>{
 		System.out.println(sql);
 		return find(sql);
 	}
+	
+	public String findNAMEbyID(String dmid){
+		String name = null;
+		try{
+			name = findById(dmid).getStr("DM_NAME");
+		}catch (Exception e){
+			
+		}
+		return name;
+	}
 }

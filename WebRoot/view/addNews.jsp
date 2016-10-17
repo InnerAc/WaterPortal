@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <script src="/static/js/jquery-2.1.4.js"></script>
 <script src="/static/js/myjs/addmodule.js"></script>
-<title>首页</title>
+<title>新闻添加</title>
 </head>
 <body>
 	<div style="width:90%;margin:5%;">
@@ -16,32 +16,44 @@
 			<h1 style="text-align:center">新闻添加</h1>
 		</div>
 		<br><br>
-		<form class="form-inline" action="/news/add" method="post">
+		<form class="" action="/news/add" method="post">
 			<div class="form-inline">
 				新闻标题:
-				<input class="form-control" name="N_title" type="text">
+				<input class="form-control" name="N_TITLE" type="text">
 			</div><br>
 			<div class="form-inline">
 				作者:
-				<input class="form-control" name="N_author" type="text">
+				<input class="form-control" name="N_AUTHOR" type="text">
 			</div><br>
 			<div class="form-inline">
 				所属部门:
-				<input class="form-control" name="N_service" type="text">
+				<input class="form-control" name="N_SERVICE" type="text">
 			</div><br>
 			<div class="form-inline">
-				所属模块:
-				<select class="form-control" name="N_superid" >
-					<c:forEach items="${modules }" var="module">
-						<option value="${module.DM_id }">${module.DM_name}</option>
-					</c:forEach>
-				</select>
+				所属模块:<span>${dmname }</span>
+				<input class="form-control" name="N_DMID" type="hidden" value="${dmid }"/>		
 			</div><br>
 			<div class="form-inline">
 				新闻内容:
-				<textarea  class="form-control" row="5" name="N_content">
+				<textarea  class="form-control" row="5" name="N_CONTENT">
 				</textarea >
 			</div><br>
+			<div class="form-inline">
+				允许所有人查看:
+				<select class="form-control" name="N_SHOWALL">
+					<option value="1"  >允许</option>
+					<option value="0" >不允许</option>
+				</select>
+			</div><br>
+			<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
+			<div class="form-group">
+				可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
+				<input class="form-control" name="N_SHOWSERVICE" type="text">
+			</div><br>
+			<div class="form-group">
+				可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>
+				<input class="form-control" name="N_SHOWUSER" type="text" value="${userid }">
+			</div>
 			<input value=" 提交 " type="submit">
 		</form>
 	</div>
