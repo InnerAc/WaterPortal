@@ -8,16 +8,9 @@ import edu.hhu.portal.model.DisplayModule;
 
 public class PageController extends Controller{
 	public void index(){
+		setSessionAttr("userid", "innerac");
+		setSessionAttr("service", "水文局");
+		setSessionAttr("username", "安纪存");
 		render("/view/index.jsp");
-	}
-	
-	public void addModule(){
-		render("/view/addModule.jsp");
-	}
-	
-	public void addNews(){
-		List<DisplayModule> dms = DisplayModule.dao.findAll();
-		setAttr("modules", dms);
-		render("/view/addNews.jsp");
 	}
 }

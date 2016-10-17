@@ -6,4 +6,8 @@ public class TestController extends Controller{
 	public void index(){
 		renderText("Test Success!");
 	}
+	public void test(){
+		String jsp = getPara();
+		render("/view/"+jsp+".jsp");
+	}
 }

@@ -45,9 +45,8 @@ public class PortalConfig extends JFinalConfig{
 		C3p0Plugin cp = new C3p0Plugin(sqlurl,sqluser, sqlpwd);
 		me.add(cp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
-		arp.addMapping("DisplayModule", "DM_id", DisplayModule.class);
-		arp.addMapping("News","N_id", News.class);
-		arp.addMapping("Files","F_id" ,Files.class);
+		arp.addMapping("WP_DISPLAYMODULE", "DM_ID", DisplayModule.class);
+		arp.addMapping("WP_NEWS","N_ID", News.class);
 		me.add(arp);
 	}
 

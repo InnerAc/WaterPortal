@@ -5,38 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Refresh" content="1; url=${url }"/>
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <script src="/static/js/jquery-2.1.4.js"></script>
-<script src="/static/js/myjs/module.js"></script>
-<script src="/static/js/myjs/index.js"></script>
-<style type="text/css">
-table{
-	table-layout: fixed;
-}
-td{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-</style>
 <title>首页</title>
 </head>
 <body>
 	<div style="width:90%;margin:5%;">
 		<div>
-			<h1 style="text-align:center">门户首页</h1>
+			<h1 style="text-align:center">${info }</h1>
 		</div>
 		<br><br>
-		<div>
-			<a class="btn btn-success" href="/module/manager">模块管理</a>
-			&nbsp;&nbsp;
-			<a class="btn btn-primary" href="/module/issued">新闻发布</a>
-			&nbsp;&nbsp;
-			<a class="btn btn-info" href="/"></a>
-			&nbsp;&nbsp;
-			<a class="btn btn-warning" href="/"></a>
-			<br>
-		</div>
+		<span style="text-align:center">5秒钟将调到目标页面，<a href="${url }">直接跳转点击这里</a></span>
 	</div>
 </body>
 </html>
