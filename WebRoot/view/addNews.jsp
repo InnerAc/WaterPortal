@@ -26,10 +26,6 @@
 				<input class="form-control" name="N_AUTHOR" type="text">
 			</div><br>
 			<div class="form-inline">
-				所属部门:
-				<input class="form-control" name="N_SERVICE" type="text">
-			</div><br>
-			<div class="form-inline">
 				所属模块:<span>${dmname }</span>
 				<input class="form-control" name="N_DMID" type="hidden" value="${dmid }"/>		
 			</div><br>

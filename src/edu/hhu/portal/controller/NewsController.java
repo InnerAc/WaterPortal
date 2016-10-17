@@ -57,6 +57,17 @@ public class NewsController extends Controller{
 			setAttr("dmname", dmname);
 			render("/view/addNews.jsp");
 		}
+		if(getRequest().getMethod().equals("POST")){
+			News news = getModel(News.class,"");
+			long id = new Date().getTime()%1000000000;
+			String nid = Long.toString(id);
+			news.set("N_ID", nid);
+			if(news.save()){
+				setAttr("info", "新闻发布成功");
+				setAttr("url", "/");
+				render("/view/success.jsp");
+			}
+		}
 	}
 	
 	/**
