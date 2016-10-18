@@ -100,3 +100,4 @@ local.properties
 .recommenders/
 *.properties
 WebRoot/WEB-INF/classes/sql.properties
+*.class
