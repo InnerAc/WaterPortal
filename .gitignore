@@ -98,3 +98,5 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+*.properties
+WebRoot/WEB-INF/classes/sql.properties
