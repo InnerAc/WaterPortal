@@ -79,7 +79,20 @@ public class NewsController extends Controller{
 	 * 如果更新失败，返回失败信息，将页面恢复到点击提交按钮前的状态
 	 */
 	public void edit(){
-		
+		if(getRequest().getMethod().equals("GET")){
+			String id = getPara();
+			News news = News.dao.findById(id);
+			setAttr("news", news);
+			render("/view/editNews.jsp");
+		}
+		if(getRequest().getMethod().equals("POST")){
+			News news = getModel(News.class,"");
+			if(news.update()){
+				setAttr("info", "新闻编辑成功");
+				setAttr("url", "/");
+				render("/view/success.jsp");
+			}
+		}
 	}
 	/**
 	 * 首先验证用户是否对此模块拥有信息发布的权限<br>

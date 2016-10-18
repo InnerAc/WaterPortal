@@ -13,30 +13,33 @@
 <body>
 	<div style="width:90%;margin:5%;">
 		<div>
-			<h1 style="text-align:center">新闻添加</h1>
+			<h1 style="text-align:center">新闻编辑</h1>
 		</div>
 		<br><br>
-		<form class="" action="/news/add" method="post">
+		<form class="" action="/news/edit" method="post">
+		<div style="display:none">
+				<input name="N_ID" type="hidden" value="${news.N_ID }"/>
+			</div>
 			<div class="form-inline">
 				新闻标题:
-				<input class="form-control" name="N_TITLE" type="text" >
+				<input class="form-control" name="N_TITLE" type="text" value="${news.N_TITLE }">
 			</div><br>
 			<div class="form-inline">
 				作者:
-				<input class="form-control" name="N_AUTHOR" type="text">
+				<input class="form-control" name="N_AUTHOR" type="text" value="${news.N_AUTHOR }">
 			</div><br>
 			<div class="form-inline">
 				所属模块:<span>${dmname }</span>
-				<input class="form-control" name="N_DMID" type="hidden" value="${dmid }"/>		
+				<input class="form-control" name="N_DMID" type="hidden" value="${news.N_DMID }"/>		
 			</div><br>
 			<div class="form-inline">
 				新闻内容:
-				<textarea  class="form-control" row="5" name="N_CONTENT">
+				<textarea  class="form-control" row="5" name="N_CONTENT" value="${news.N_CONTENT }">
 				</textarea >
 			</div><br>
 			<div class="form-inline">
 				允许所有人查看:
-				<select class="form-control" name="N_SHOWALL">
+				<select class="form-control" name="N_SHOWALL" value="${news.N_SHOWALL }">
 					<option value="1"  >允许</option>
 					<option value="0" >不允许</option>
 				</select>
@@ -44,13 +47,14 @@
 			<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
 			<div class="form-group">
 				可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
-				<input class="form-control" name="N_SHOWSERVICE" type="text">
+				<input class="form-control" name="N_SHOWSERVICE" type="text" value="${news.N_SHOWSERVICE }">
 			</div><br>
 			<div class="form-group">
 				可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>
-				<input class="form-control" name="N_SHOWUSER" type="text" value="${userid }">
+				<input class="form-control" name="N_SHOWUSER" type="text" value="${news.N_SHOWUSER }">
 			</div>
-			<input value=" 提交 " type="submit">
+			<input value=" 提交 " type="submit">&nbsp;&nbsp;
+			<a class="btn btn-warning" href="/module/manager">返回</a>
 		</form>
 	</div>
 </body>
