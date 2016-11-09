@@ -7,8 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <script src="/static/js/jquery-2.1.4.js"></script>
-<script src="/static/js/myjs/module.js"></script>
-<script src="/static/js/myjs/index.js"></script>
 <style type="text/css">
 table{
 	table-layout: fixed;
@@ -17,6 +15,9 @@ td{
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+.icon{
+	width:fill;
 }
 </style>
 <title>首页</title>
@@ -32,7 +33,7 @@ td{
 			&nbsp;&nbsp;
 			<a class="btn btn-primary" href="/module/issued">新闻发布</a>
 			&nbsp;&nbsp;
-			<a class="btn btn-info" href="/"></a>
+			<a class="btn btn-info" href="/">返回主页</a>
 			&nbsp;&nbsp;
 			<a class="btn btn-warning" href="/"></a>
 			<br>

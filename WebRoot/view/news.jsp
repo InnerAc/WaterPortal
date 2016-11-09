@@ -12,12 +12,13 @@
 <body>
 	<div style="width:80%;margin:10%;">
 	<div>
-		<h1 style="text-align:center">${news.N_title }</h1>
-		<h6 style="text-align:right">${news.N_date }</h6>
+		<h1 style="text-align:center">${news.N_TITLE }</h1>
+		<h6 style="text-align:right">${news.N_DATE }</h6>
 	</div>
 	<div>
-		${news.N_content }
+		${news.N_CONTENT }
 	</div>
+	<%@include file="footer.jsp" %>
 	</div>
 </body>
 </html>

@@ -15,6 +15,10 @@ public class NewsController extends Controller{
 	 * 如果没有查看权限，返回没有权限信息，重定向主页<br>
 	 */
 	public void index(){
+		String nid = getPara();
+		News news = News.dao.findByNID(nid);
+		setAttr("news", news);
+		render("/view/news.jsp");
 	}
 	
 	/**
@@ -31,7 +35,15 @@ public class NewsController extends Controller{
 	 * 返回新闻列表
 	 */
 	public void manager(){
-		
+		String dmid = getPara();
+		String userid = getSessionAttr("userid");
+		if(userid == null){
+			userid = "NUL";
+		}
+		List<News> newss = News.dao.findByDMID(dmid,userid);
+		setAttr("dmid", dmid);
+		setAttr("newss", newss);
+		render("/view/managerNews.jsp");
 	}
 	
 	/**
@@ -59,9 +71,12 @@ public class NewsController extends Controller{
 		}
 		if(getRequest().getMethod().equals("POST")){
 			News news = getModel(News.class,"");
-			long id = new Date().getTime()%1000000000;
+			long time = new Date().getTime();
+			long id = time%1000000000;
+			String date = Long.toString(time);
 			String nid = Long.toString(id);
 			news.set("N_ID", nid);
+			news.set("N_DATE", date);
 			if(news.save()){
 				setAttr("info", "新闻发布成功");
 				setAttr("url", "/");
@@ -101,6 +116,10 @@ public class NewsController extends Controller{
 	 * 返回成功信息，重定向到新闻管理界面
 	 */
 	public void delete(){
-		
+		String nid = getPara();
+		News news = News.dao.findById(nid);
+		if(news.delete()){
+			render("删除成功");
+		}
 	}
 }

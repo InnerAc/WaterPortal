@@ -16,6 +16,7 @@ import edu.hhu.portal.controller.ModuleController;
 import edu.hhu.portal.controller.NewsController;
 import edu.hhu.portal.controller.PageController;
 import edu.hhu.portal.controller.TestController;
+import edu.hhu.portal.model.APP;
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.Files;
 import edu.hhu.portal.model.News;
@@ -47,6 +48,7 @@ public class PortalConfig extends JFinalConfig{
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
 		arp.addMapping("WP_DISPLAYMODULE", "DM_ID", DisplayModule.class);
 		arp.addMapping("WP_NEWS","N_ID", News.class);
+		arp.addMapping("WP_APP", "A_ID",APP.class);
 		me.add(arp);
 	}
 

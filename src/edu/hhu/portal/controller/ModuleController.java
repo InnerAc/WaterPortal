@@ -1,12 +1,15 @@
 package edu.hhu.portal.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.DisplayModule;
+import edu.hhu.portal.model.News;
 
 public class ModuleController extends Controller{
 	/**
@@ -101,5 +104,18 @@ public class ModuleController extends Controller{
 	 * 根据模块id返回模块的基本信息及所需要显示的新闻列表
 	 */
 	public void module(){
+		String dmid = getPara();
+		String userid = getSessionAttr("userid");
+		if(userid == null){
+			userid = "NUL";
+		}
+		DisplayModule dm = DisplayModule.dao.findById(dmid);
+		List<News> newss = News.dao.findByDMID(dmid, 3,userid);
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("dm", dm);
+		res.put("newss", newss);
+//		String jsonString = JSON.toJSONString(res);
+//		renderJson(jsonString);
+		renderJson(res);
 	}
 }

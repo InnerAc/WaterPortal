@@ -6,8 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/summernote.css" />
 <script src="/static/js/jquery-2.1.4.js"></script>
 <script src="/static/js/myjs/addmodule.js"></script>
+
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/summernote.min.js"></script>
+
 <title>新闻添加</title>
 </head>
 <body>
@@ -16,7 +22,7 @@
 			<h1 style="text-align:center">新闻添加</h1>
 		</div>
 		<br><br>
-		<form class="" action="/news/add" method="post">
+		<form id="form" class="" action="/news/add" method="post">
 			<div class="form-inline">
 				新闻标题:
 				<input class="form-control" name="N_TITLE" type="text" >
@@ -31,8 +37,8 @@
 			</div><br>
 			<div class="form-inline">
 				新闻内容:
-				<textarea  class="form-control" row="5" name="N_CONTENT">
-				</textarea >
+				<textarea style="display:none" id="contents" name="N_CONTENT"></textarea >
+				<div id="editor"></div>
 			</div><br>
 			<div class="form-inline">
 				允许所有人查看:
@@ -43,15 +49,26 @@
 			</div><br>
 			<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
 			<div class="form-group">
-				可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
+				可查看该新闻的部门(输入部门名称使用英文逗号隔开):<br>
 				<input class="form-control" name="N_SHOWSERVICE" type="text">
 			</div><br>
 			<div class="form-group">
-				可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>
+				可查看该新闻的用户(输入用户登录名使用英文逗号隔开):<br>
 				<input class="form-control" name="N_SHOWUSER" type="text" value="${userid }">
 			</div>
-			<input value=" 提交 " type="submit">
+			<button class="btn btn-success" onclick="submits()">提交</button>
 		</form>
+		<%@include file="footer.jsp" %>
 	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#editor').summernote();
+		});
+		function submits(){
+			$('#contents').html($('#editor').summernote('code'));
+			$('#editor').next().remove();
+			$('#form').submit();
+		}
+	</script>
 </body>
 </html>

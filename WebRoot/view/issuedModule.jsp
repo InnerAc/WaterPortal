@@ -27,7 +27,7 @@
 				<tbody  id="items">
 					<c:forEach items="${dms }" var="dm">
 					<tr>
-						<td><a>${dm.DM_NAME }</a></td>
+						<td><a href="/module/module/${dm.DM_ID }">${dm.DM_NAME }</a></td>
 						<td>${dm.DM_SERVICE }</td>
 						<td>
 							<a class="btn btn-success" href="/news/manager/${dm.DM_ID}">浏览</a>
