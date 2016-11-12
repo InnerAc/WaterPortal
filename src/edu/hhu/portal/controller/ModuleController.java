@@ -1,5 +1,6 @@
 package edu.hhu.portal.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -117,5 +118,29 @@ public class ModuleController extends Controller{
 //		String jsonString = JSON.toJSONString(res);
 //		renderJson(jsonString);
 		renderJson(res);
+	}
+	
+	/**
+	 * 得到模块列表的所有信息<br>
+	 * 根据id,id,id...获取所有模块的信息
+	 */
+	public void modules(){
+		String dmids = getPara();
+		String userid = getSessionAttr("userid");
+		if(userid == null){
+			userid = "NUL";
+		}
+		String[] dmidlist = dmids.split(",");
+		List<Object> list = new ArrayList<Object>();
+		for(String dmid : dmidlist){
+			System.out.println(dmid);
+			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			List<News> newss = News.dao.findByDMID(dmid, 7,userid);
+			Map<String, Object> res = new HashMap<String, Object>();
+			res.put("dm", dm);
+			res.put("newss", newss);
+			list.add(res);
+		}
+		renderJson(list);
 	}
 }

@@ -16,10 +16,12 @@ import edu.hhu.portal.controller.ModuleController;
 import edu.hhu.portal.controller.NewsController;
 import edu.hhu.portal.controller.PageController;
 import edu.hhu.portal.controller.TestController;
+import edu.hhu.portal.controller.UserController;
 import edu.hhu.portal.model.APP;
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.Files;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.USER;
 
 public class PortalConfig extends JFinalConfig{
 
@@ -35,6 +37,7 @@ public class PortalConfig extends JFinalConfig{
 		me.add("/test",TestController.class);
 		me.add("/module",ModuleController.class);
 		me.add("/news",NewsController.class);
+		me.add("/user",UserController.class);
 		me.add("/",PageController.class);
 	}
 
@@ -49,6 +52,7 @@ public class PortalConfig extends JFinalConfig{
 		arp.addMapping("WP_DISPLAYMODULE", "DM_ID", DisplayModule.class);
 		arp.addMapping("WP_NEWS","N_ID", News.class);
 		arp.addMapping("WP_APP", "A_ID",APP.class);
+		arp.addMapping("WP_USER", "U_USERID",USER.class);
 		me.add(arp);
 	}
 

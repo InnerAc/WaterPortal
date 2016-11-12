@@ -1,0 +1,100 @@
+body{
+	background-color: #EEE;
+	border-color: #000;
+	font-family: Microsoft YaHei;
+}
+table{
+	table-layout: fixed;
+}
+td{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.header{
+	padding: 1%;
+	background: #DDD;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+.header img{
+	margin-left: 20px;
+}
+.header h1,h3{
+	margin: 0;
+}
+.bodys{
+	margin-left:2%;
+	margin-right:2%;
+}
+.header h1{
+	margin-top: 10px;
+}
+.appdiv{
+	margin-top: 5px;
+	margin-left:0;
+	margin-right:0;
+	padding-left:2%;
+	padding-right:2%;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+	background: #99CCCC;
+}
+.app{
+	background-color: #99CCFF;
+	border-radius: 50%;
+}
+.modules{
+	margin-top: 5px;
+}
+.module{
+	/*margin-left: -3%;*/
+	margin-top: 7px;
+	border-style: none solid solid solid;
+	border-color: #337ab7;
+	border-width: 1px;
+	border-radius: 5px 5px 5px 5px;
+	float:left;
+	width:100%;
+}
+.module > .mheader1{
+	border-style: solid none none none;
+	border-width: 5px;
+	border-color: #337ab7;
+	background-color: #337ab7;
+	color: #FFF;
+	font-size: 20px;
+	/*background-color: #99CCFF;*/
+	border-radius: 5px 5px 0 0;
+	/*padding: 1%;*/
+}
+.module > .mbody{
+	border-style: solid none none none;
+	border-color: #337ab7;
+	border-width: 1px;
+	padding: 2%;
+	/*background-color: #DDD;*/
+	border-radius: 0 0 5px 5px;
+	overflow: hidden; 
+	height: 250px;
+}
+.module > .mbody2{
+	border-style: solid none none none;
+	border-color: #337ab7;
+	border-width: 1px;
+	padding: 2%;
+	/*background-color: #DDD;*/
+	border-radius: 0 0 5px 5px;
+	overflow: hidden; 
+	height: 240px;
+}
+.manager{
+	margin-top: 5px;
+	padding-left:2%;
+	padding-right:2%;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+	background: #FFFFCC;
+}

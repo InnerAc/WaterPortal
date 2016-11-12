@@ -4,11 +4,13 @@ import java.util.List;
 
 
 
+
 import kjoms.udcs.bean.CAClient;
 
 import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.APP;
+import edu.hhu.portal.model.USER;
 
 public class PageController extends Controller{
 	public void index(){
@@ -17,9 +19,11 @@ public class PageController extends Controller{
 //		setSessionAttr("username", "安纪存");
 		String userid = getSessionAttr("userid");
 		List<APP> apps = APP.dao.findAll();
+		USER user = USER.dao.findById(userid);
 		setAttr("apps", apps);
-		setAttr("userid", userid);
-		render("/view/indexUser.jsp");
+		setAttr("user", user);
+//		render("/view/indexUser.jsp");
+		render("/view/indexNew.jsp");
 	}
 	public void manager(){
 		setSessionAttr("userid", "innerac");
@@ -30,9 +34,9 @@ public class PageController extends Controller{
 	public void login(){
 		String userid = getPara("userid");	
 		String pwd = getPara("pwd");
+		if(userid.equals("innerac"))
 		if(CAClient.loginCA(userid, pwd)){
 			setSessionAttr("userid", userid);
-			System.out.println(userid+" "+pwd);
 			redirect("/");
 		}else{
 			setAttr("info", "登陆失败，请检查用户名密码");
