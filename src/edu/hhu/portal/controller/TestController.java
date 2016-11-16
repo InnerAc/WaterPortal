@@ -10,4 +10,8 @@ public class TestController extends Controller{
 		String jsp = getPara();
 		render("/view/"+jsp+".jsp");
 	}
+	public void test2(){
+		String jsp = getPara();
+		render("/view/backend/"+jsp+".jsp");
+	}
 }

@@ -23,8 +23,8 @@
     	</div>
     	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="rightMenu">
 	        <span style="font-size:25px;float:right;cursor:pointer;" class="glyphicon glyphicon-forward" id="disRight"></span> 
-	    	<a style="cursor:pointer;" onclick="saveList();">保存当前布局</a>
 	        <a href="/manager">管理</a>
+	    	<a style="cursor:pointer;" onclick="saveList();">保存当前布局</a>
 	    </div>
         <div class="header row">
             <div class="col-md-1 col-lg-1">

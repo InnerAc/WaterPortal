@@ -7,6 +7,7 @@ import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.USER;
 
 public class NewsController extends Controller{
 	/**
@@ -41,9 +42,11 @@ public class NewsController extends Controller{
 			userid = "NUL";
 		}
 		List<News> newss = News.dao.findByDMID(dmid,userid);
+		USER user = getSessionAttr("user");
 		setAttr("dmid", dmid);
 		setAttr("newss", newss);
-		render("/view/managerNews.jsp");
+		setAttr("user", user);
+		render("/view/backend/managerNews.jsp");
 	}
 	
 	/**
@@ -67,7 +70,7 @@ public class NewsController extends Controller{
 			setAttr("userid", userid);
 			setAttr("dmid", dmid);
 			setAttr("dmname", dmname);
-			render("/view/addNews.jsp");
+			render("/view/backend/addNews.jsp");
 		}
 		if(getRequest().getMethod().equals("POST")){
 			News news = getModel(News.class,"");
@@ -79,7 +82,7 @@ public class NewsController extends Controller{
 			news.set("N_DATE", date);
 			if(news.save()){
 				setAttr("info", "新闻发布成功");
-				setAttr("url", "/");
+				setAttr("url", "/module/issued");
 				render("/view/success.jsp");
 			}
 		}
@@ -98,13 +101,13 @@ public class NewsController extends Controller{
 			String id = getPara();
 			News news = News.dao.findById(id);
 			setAttr("news", news);
-			render("/view/editNews.jsp");
+			render("/view/backend/editNews.jsp");
 		}
 		if(getRequest().getMethod().equals("POST")){
 			News news = getModel(News.class,"");
 			if(news.update()){
 				setAttr("info", "新闻编辑成功");
-				setAttr("url", "/");
+				setAttr("url", "/module/issued");
 				render("/view/success.jsp");
 			}
 		}

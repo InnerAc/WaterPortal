@@ -16,6 +16,9 @@ function fillapps(){
 
 function genModules(){
 	dm_ids = $('#queue').html();
+	if(dm_ids == null){
+		return ;
+	}
 	$.get('/module/modules/'+dm_ids,function(data){
 		dmodules = '';
 		nn = data.length;

@@ -14,29 +14,32 @@ import edu.hhu.portal.model.USER;
 
 public class PageController extends Controller{
 	public void index(){
-//		setSessionAttr("userid", "null");
-//		setSessionAttr("service", "水文局");
-//		setSessionAttr("username", "安纪存");
 		String userid = getSessionAttr("userid");
 		List<APP> apps = APP.dao.findAll();
-		USER user = USER.dao.findById(userid);
+		if(userid != null){
+			USER user = getSessionAttr(userid);
+			setAttr("user", user);
+		}
 		setAttr("apps", apps);
-		setAttr("user", user);
-//		render("/view/indexUser.jsp");
 		render("/view/indexNew.jsp");
 	}
 	public void manager(){
-		setSessionAttr("userid", "innerac");
-		setSessionAttr("service", "水文局");
-		setSessionAttr("username", "安纪存");
-		render("/view/index.jsp");
+		USER user = getSessionAttr("user");
+		setAttr("user", user);
+		if(user == null){
+			render("/view/indexNew.jsp");
+		}else{
+			render("/view/backend/backindex.jsp");
+		}
 	}
 	public void login(){
 		String userid = getPara("userid");	
 		String pwd = getPara("pwd");
-		if(userid.equals("innerac"))
+//		if(userid.equals("innerac"))
 		if(CAClient.loginCA(userid, pwd)){
 			setSessionAttr("userid", userid);
+			USER user = USER.dao.findById(userid);
+			setSessionAttr("user", user);
 			redirect("/");
 		}else{
 			setAttr("info", "登陆失败，请检查用户名密码");
@@ -46,6 +49,7 @@ public class PageController extends Controller{
 	}
 	public void logout(){
 		removeSessionAttr("userid");
-		redirect("/");
+		removeSessionAttr("user");
+		render("/view/toindex.jsp");
 	}
 }

@@ -11,6 +11,7 @@ import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.USER;
 
 public class ModuleController extends Controller{
 	/**
@@ -26,8 +27,10 @@ public class ModuleController extends Controller{
 	public void manager(){
 		String userid = getSessionAttr("userid");
 		List<DisplayModule> dms = DisplayModule.dao.findManageModules(userid);
+		USER user = getSessionAttr("user");
 		setAttr("dms", dms);
-		render("/view/managerModule.jsp");
+		setAttr("user", user);
+		render("/view/backend/managerModule.jsp");
 	}
 	/**
 	 * 获取该用户拥有信息发布权限的模块列表
@@ -36,7 +39,7 @@ public class ModuleController extends Controller{
 		String userid = getSessionAttr("userid");
 		List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
 		setAttr("dms", dms);
-		render("/view/issuedModule.jsp");
+		render("/view/backend/issuedModule.jsp");
 	}
 	/**
 	 * 增加一个新的模块<br>
@@ -48,8 +51,10 @@ public class ModuleController extends Controller{
 	public void add(){
 		if(getRequest().getMethod().equals("GET")){
 			String userid = getSessionAttr("userid");
+			USER user = getSessionAttr("user");
 			setAttr("userid", userid);
-			render("/view/addModule.jsp");
+			setAttr("user", user);
+			render("/view/backend/addModule.jsp");
 		}
 		if(getRequest().getMethod().equals("POST")){
 			DisplayModule dm = getModel(DisplayModule.class,"");
@@ -58,7 +63,7 @@ public class ModuleController extends Controller{
 			dm.set("DM_ID", dmid);
 			if(dm.save()){
 				setAttr("info", "创建模块成功");
-				setAttr("url", "/");
+				setAttr("url", "/module/manager");
 				render("/view/success.jsp");
 			}
 		}
@@ -72,17 +77,19 @@ public class ModuleController extends Controller{
 	 * 如果更新失败，返回失败信息，将页面恢复到点击提交按钮前的状态
 	 */
 	public void edit(){
+		USER user = getAttr("user");
+		setAttr("user", user);
 		if(getRequest().getMethod().equals("GET")){
 			String mdid = getPara();
 			DisplayModule dm = DisplayModule.dao.findById(mdid);
 			setAttr("dm", dm);
-			render("/view/editModule.jsp");
+			render("/view/backend/editModule.jsp");
 		}
 		if(getRequest().getMethod().equals("POST")){
 			DisplayModule dm = getModel(DisplayModule.class,"");
 			if(dm.update()){
 				setAttr("info", "修改模块成功");
-				setAttr("url", "/");
+				setAttr("url", "/module/manager");
 				render("/view/success.jsp");
 			}
 		}

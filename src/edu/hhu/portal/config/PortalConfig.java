@@ -10,6 +10,7 @@ import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 
 import edu.hhu.portal.controller.ModuleController;
@@ -21,6 +22,7 @@ import edu.hhu.portal.model.APP;
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.Files;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.ServiceMap;
 import edu.hhu.portal.model.USER;
 
 public class PortalConfig extends JFinalConfig{
@@ -46,13 +48,14 @@ public class PortalConfig extends JFinalConfig{
 		String sqlurl = PropKit.get("url").trim();
 		String sqluser = PropKit.get("user").trim();
 		String sqlpwd = PropKit.get("pwd").trim();
-		C3p0Plugin cp = new C3p0Plugin(sqlurl,sqluser, sqlpwd);
+		DruidPlugin cp = new DruidPlugin(sqlurl,sqluser, sqlpwd);
 		me.add(cp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
 		arp.addMapping("WP_DISPLAYMODULE", "DM_ID", DisplayModule.class);
 		arp.addMapping("WP_NEWS","N_ID", News.class);
 		arp.addMapping("WP_APP", "A_ID",APP.class);
 		arp.addMapping("WP_USER", "U_USERID",USER.class);
+		arp.addMapping("WP_SERVICEMAP", "SM_SRC",ServiceMap.class);
 		me.add(arp);
 	}
 
