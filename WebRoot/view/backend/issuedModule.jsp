@@ -95,6 +95,7 @@
 		handle: ".panel-heading",
 	});
 	    $("#sm-modules").disableSelection();
+	    $("#l2").attr('class','active');
 </script>
 </body>
 </html>

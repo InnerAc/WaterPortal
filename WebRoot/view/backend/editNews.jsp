@@ -130,6 +130,7 @@ function submits(){
 	$('#editor').next().remove();
 	$('#form').submit();
 }
+$("#l2").attr('class','active');
 </script>
 </body>
 </html>

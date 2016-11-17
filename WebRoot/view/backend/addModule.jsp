@@ -124,7 +124,7 @@
 <script src="/static/js/backend/app.v2.js"></script>
 <script src="/static/js/jquery-ui.min.js" ></script>
 <script>
-
+$("#l1").attr('class','active');
 </script>
 </body>
 </html>

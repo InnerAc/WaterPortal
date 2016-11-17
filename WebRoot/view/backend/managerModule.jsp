@@ -112,6 +112,7 @@
 		handle: ".panel-heading",
 	});
 	    $("#sm-modules").disableSelection();
+	    $("#l1").attr('class','active');
 </script>
 </body>
 </html>

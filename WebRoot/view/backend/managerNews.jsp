@@ -109,6 +109,7 @@ function drop(btn){
 		
 	}
 }
+$("#l2").attr('class','active');
 </script>
 </body>
 </html>

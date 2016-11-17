@@ -114,6 +114,7 @@
 	});
 	$("#sm-modules").disableSelection();
 	init();
+	$("#l4").attr('class','active');
 </script>
 </body>
 </html>
