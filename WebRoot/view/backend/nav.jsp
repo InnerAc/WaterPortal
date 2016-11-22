@@ -25,13 +25,13 @@
 				<li id="l2"><a href="/module/issued"><i class="fa fa-credit-card icon"><b class="bg-primary dker"></b></i><span>模块内容管理</span></a></li>
 				<li id="l3"><a href="#down"><i class="fa fa-fire icon"><b class="bg-success"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>应用管理</span></a>
 					<ul class="nav lt">
-						<li><a href="#"><i class="fa fa-asterisk"></i><span>应用管理</span></a></li>
-						<li><a href="#"><i class="fa fa-plus"></i><span>增加应用</span></a></li>
+						<li><a href="/app/manager"><i class="fa fa-asterisk"></i><span>应用管理</span></a></li>
+						<li><a href="/app/add"><i class="fa fa-plus"></i><span>增加应用</span></a></li>
 					</ul>
 				</li>
 				<li id="l4"><a href="#down"><i class="fa fa-calendar icon"><b class="bg-info"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>首页个性化</span></a>
 					<ul class="nav lt">
-						<li><a href="#"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
+						<li><a href="/user/addAPP"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
 						<li><a href="/user/addModule"><i class="fa fa-plus"></i><span>订阅模块</span></a></li>
 					</ul>
 				</li>

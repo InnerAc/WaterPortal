@@ -137,6 +137,10 @@ public class ModuleController extends Controller{
 		if(userid == null){
 			userid = "NUL";
 		}
+		if(dmids == null || dmids.equals("")){
+			renderJson();
+			return;
+		}
 		String[] dmidlist = dmids.split(",");
 		List<Object> list = new ArrayList<Object>();
 		for(String dmid : dmidlist){

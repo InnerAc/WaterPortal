@@ -15,8 +15,8 @@ function fillapps(){
 }
 
 function genModules(){
-	dm_ids = $('#queue').html();
-	if(dm_ids == null){
+	dm_ids = $('#dm_queue').html();
+	if(dm_ids == null || dm_ids == ''){
 		return ;
 	}
 	$.get('/module/modules/'+dm_ids,function(data){
@@ -55,4 +55,22 @@ function genModule(module){
 	}
 	dmodule += '</div></div></div>';
 	return dmodule;
+}
+
+function genAPPS(){
+	app_ids = $('#app_queue').html();
+	if(app_ids == null || app_ids == ''){
+		return ;
+	}
+	$.get('/app/list/'+app_ids,function(data){
+		appshtml = '';
+		nn = data.length;
+		for(j =0;j<nn;j++){
+			app = data[j];
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a href="'+app.A_URL+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+		}
+		$('#apps').html(appshtml);
+		$('#apps').sortable();
+		$('#apps').disableSelection();
+	});
 }

@@ -65,12 +65,14 @@
         <div>
     	<%@include file="footer.jsp" %>
     	<div style="display:none">
-    		<div id="queue">${user.U_LIST }</div>
+    		<div id="dm_queue">${user.U_LIST }</div>
+    		<div id="app_queue">${user.U_APPS }</div>
     	</div>
     	</div>
     </body>
     <script type="text/javascript">
     	genModules();
+    	genAPPS();
 		$(function() {
    		    $("#show_modules").sortable({
 				handle: ".glyphicon-move",

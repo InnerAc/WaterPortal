@@ -9,8 +9,7 @@
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="/static/css/backend/app.v2.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/summernote.css" />
+<link rel="stylesheet" href="/static/css/backend/appstyle.css" type="text/css" />
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
@@ -59,52 +58,30 @@
 		<section class="scrollable padder">
 			<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
 				<li><a href="/manager"><i class="fa fa-home"></i>后台主页</a></li>
-				<li><a href="/module/issued"><i class="fa fa-desktop"></i>模块内容管理</a></li>
-				<li class="active">添加模块内容</li>
+				<li class="active">应用管理</li>
 			</ul>
 			<div class="m-b-md">
-				<h3 class="m-b-none">添加模块内容</h3>
-				<small>这里可以看到你可以向展示模块添加一条内容。</small> </div>
+				<h3 class="m-b-none">应用图标修改</h3>
+				<small>这里你可以修改已有应用的图标。</small> </div>
 			<section class="panel panel-default">
 			</section>
-			<div class="col-md-10 row">
-				<form id="form" class="" action="/news/add" method="post">
-				<div class="input-group">
-					新闻标题:
-					<input class="form-control" name="N_TITLE" type="text" >
-				</div><br>
-				<div class="input-group">
-					作者:
-					<input class="form-control" name="N_AUTHOR" type="text">
-				</div><br>
-				<div class="form-inline">
-					所属模块:<span>${dmname }</span>
-					<input class="form-control" name="N_DMID" type="hidden" value="${dmid }"/>		
-				</div><br>
-				<div class="form-inline">
-					新闻内容:
-					<textarea style="display:none" id="contents" name="N_CONTENT"></textarea >
-					<div id="editor"></div>
-				</div><br>
-				<div class="input-group">
-					允许所有人查看:
-					<select class="form-control" name="N_SHOWALL">
-						<option value="1"  >允许</option>
-						<option value="0" >不允许</option>
-					</select>
-				</div><br>
-				<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
-				<div class="form-group">
-					可查看该新闻的部门(输入部门名称使用英文逗号隔开):<br>
-					<input class="form-control" name="N_SHOWSERVICE" type="text">
-				</div><br>
-				<div class="form-group">
-					可查看该新闻的用户(输入用户登录名使用英文逗号隔开):<br>
-					<input class="form-control" name="N_SHOWUSER" type="text" value="${userid }">
-				</div>
-				<button class="btn btn-success" onclick="submits()">提交</button>
-				<a href="/module/issued" class="btn btn-warning">返回</a>
-			</form>
+			<div>
+				<h4 class="m-t-xs">修改图标</h4>
+				<form action="/app/img" method="post" enctype="multipart/form-data" >
+					<div style="display:none">
+						<input type="hidden" name="A_ID" value="${app.A_ID }"/>
+					</div>
+					<div>
+						当前图标样式为:
+						<img src="/static/icon/${app.A_ICON }" alt="${app.A_NAME }"/>
+					</div><br>
+					<div class="input-group">
+						<label>请选择新的图标:</label>
+						<input type="file" id="file" name="file" class="file-upload"></input>
+					</div><br>
+					<input type="submit" class="btn btn-default" value="提交">
+					<a href="/app/manager" class="btn btn-warning">返回</a>
+				</form>
 			</div>
 		</section>
 		</section>
@@ -115,18 +92,8 @@
 </section>
 <script src="/static/js/backend/app.v2.js"></script>
 <script src="/static/js/jquery-ui.min.js" ></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/summernote.min.js"></script>
 <script>
-$(function() {
-	$('#editor').summernote();
-});
-function submits(){
-	$('#contents').html($('#editor').summernote('code'));
-	$('#editor').next().remove();
-	$('#form').submit();
-}
-$("#l2").attr('class','active');
+	    $("#l3").attr('class','active');
 </script>
 </body>
 </html>
