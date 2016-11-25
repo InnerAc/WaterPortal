@@ -11,6 +11,8 @@ import com.jfinal.render.Render;
 import com.jfinal.upload.UploadFile;
 
 import edu.hhu.portal.model.APP;
+import edu.hhu.portal.model.Service;
+import edu.hhu.portal.model.USER;
 
 public class APPController extends Controller{
 	public void index(){
@@ -24,6 +26,19 @@ public class APPController extends Controller{
 	 */
 	public void list(){
 		String appides = getPara();
+		
+		String userid = getSessionAttr("userid");
+		if(userid == null){
+			userid = "NUL";
+			appides = Service.dao.findById("tourist").getStr("S_APPS");
+		}
+		if(appides == null || appides.equals("")){
+			USER user = getSessionAttr("user");
+			String serviceName = user.getStr("U_SERVICE");
+			appides = Service.dao.findById(serviceName).getStr("S_APPS");
+		}
+		
+		
 		String[] appids = appides.split(",");
 		System.out.println(appids);
 		List<APP> apps = new ArrayList<APP>();

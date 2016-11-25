@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-<script src="/static/js/jquery-2.1.4.js"></script>
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/bootstrap.css" />
+<script src="${base_path}/static/js/base.js" ></script>
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
 <title>水利新闻</title>
 </head>
 <body>

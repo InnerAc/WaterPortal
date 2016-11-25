@@ -40,7 +40,39 @@ function save(){
 			list += ','+$(headers[i]).attr('id');
 		}
 	}
-	$.post('/user/updateList/',{list:list},function(data){
+	$.post(base_path+'/user/updateList/',{list:list},function(data){
+		alert("保存成功！！");
+	});
+}
+function service_save(){
+	div = $('#sm-modules');
+	headers = div.find('header');
+	n = headers.length;
+	list = '';
+	for(i=0;i<n;i++){
+		if(i == 0){
+			list = $(headers[i]).attr('id');
+		}else{
+			list += ','+$(headers[i]).attr('id');
+		}
+	}
+	$.post(base_path+'/service/updateList/',{list:list},function(data){
+		alert("保存成功！！");
+	});
+}
+function tourist_save(){
+	div = $('#sm-modules');
+	headers = div.find('header');
+	n = headers.length;
+	list = '';
+	for(i=0;i<n;i++){
+		if(i == 0){
+			list = $(headers[i]).attr('id');
+		}else{
+			list += ','+$(headers[i]).attr('id');
+		}
+	}
+	$.post(base_path+'/service/updateListTourist/',{list:list},function(data){
 		alert("保存成功！！");
 	});
 }

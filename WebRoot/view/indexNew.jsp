@@ -6,15 +6,16 @@
 	<head>
 		<title>信息门户</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-		<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet"/>
-        <link href="/static/css/portal.css" type="text/css" rel="stylesheet"/>
-        <link href="/static/css/component.css" type="text/css" rel="stylesheet"/>
-		<script src="/static/js/jquery-2.1.4.js"></script>
-        <script src="/static/js/jquery-ui.min.js" ></script>
-        <script src="/static/js/bootstrap.min.js" ></script>
-        <script src="/static/js/myjs/portals.js" ></script>
-        <script src="/static/js/myjs/index.js" ></script>
-        <script src="/static/js/myjs/classie.js" ></script>
+		<link href="${base_path}/static/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="${base_path}/static/css/portal.css" type="text/css" rel="stylesheet"/>
+        <link href="${base_path}/static/css/component.css" type="text/css" rel="stylesheet"/>
+        <script src="${base_path}/static/js/base.js" ></script>
+		<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
+        <script src="${base_path}/static/js/jquery-ui.min.js" ></script>
+        <script src="${base_path}/static/js/bootstrap.min.js" ></script>
+        <script src="${base_path}/static/js/myjs/portals.js" ></script>
+        <script src="${base_path}/static/js/myjs/index.js" ></script>
+        <script src="${base_path}/static/js/myjs/classie.js" ></script>
         
 	</head>
     <body>
@@ -23,12 +24,12 @@
     	</div>
     	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="rightMenu">
 	        <span style="font-size:25px;float:right;cursor:pointer;" class="glyphicon glyphicon-forward" id="disRight"></span> 
-	        <a href="/manager">管理</a>
+	        <a href="${base_path}/manager">管理</a>
 	    	<a style="cursor:pointer;" onclick="saveList();">保存当前布局</a>
 	    </div>
         <div class="header row">
             <div class="col-md-1 col-lg-1">
-                <img class="img-responsive" src="/static/image/logo.png">
+                <img class="img-responsive" src="${base_path}/static/image/logo.png">
             </div>
             <div class="col-md-8 col-lg-8" >
                 <h1>江苏省水利厅门户系统</h1>
@@ -41,7 +42,7 @@
             </c:if>
             <c:if test="${user!= null }">
             	<h3 style="float:right;">${user.U_SERVICE }:${user.U_NAME }</h3><br><br> 
-            	<a style="float:right;" href="/logout">退出</a>     	
+            	<a style="float:right;" href="${base_path}/logout">退出</a>     	
             </c:if>
             </div>
         </div>
@@ -49,17 +50,13 @@
 	        <div class="appdiv row" id="apps">
 	        <c:forEach items="${apps }" var="app">
 	            <div class="col-md-1 col-sm-3"><center>
-	            <a href="${app.A_URL }"><img class="img-responsive img-circle" alt="${app.A_NAME }" src="/static/icon/${app.A_ICON }"/>
+	            <a href="${app.A_URL }"><img class="img-responsive img-circle" alt="${app.A_NAME }" src="${base_path}/static/icon/${app.A_ICON }"/>
 	            <span>${app.A_NAME }</span>
 	            </a>
 	            </center></div>    
 	        </c:forEach>
 	        </div>
 	        <div class="modules row" id="show_modules">
-	        </div>
-	        <div class="manager row">
-	        	<button class="btn btn-success" onclick="saveList();">保存当前布局</button>
-	        	<a class="btn btn-success" href="/manager">管理</a>
 	        </div>
 	        </div>
         <div>
@@ -87,12 +84,10 @@
 		showRight.onclick = function(){
 			classie.toggle(this,'active');
 			classie.toggle(rightMenu,'cbp-spmenu-open');
-			disableOther('showRight');
 		};
 		disRight.onclick = function(){
 			classie.toggle(this,'active');
 			classie.toggle(rightMenu,'cbp-spmenu-open');
-			disableOther('showRight');
 		}
     </script>
 </html>

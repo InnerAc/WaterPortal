@@ -11,6 +11,7 @@ import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.Service;
 import edu.hhu.portal.model.USER;
 
 public class ModuleController extends Controller{
@@ -136,10 +137,12 @@ public class ModuleController extends Controller{
 		String userid = getSessionAttr("userid");
 		if(userid == null){
 			userid = "NUL";
+			dmids = Service.dao.findById("tourist").getStr("S_LIST");
 		}
 		if(dmids == null || dmids.equals("")){
-			renderJson();
-			return;
+			USER user = getSessionAttr("user");
+			String serviceName = user.getStr("U_SERVICE");
+			dmids = Service.dao.findById(serviceName).getStr("S_LIST");
 		}
 		String[] dmidlist = dmids.split(",");
 		List<Object> list = new ArrayList<Object>();

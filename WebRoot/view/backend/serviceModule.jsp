@@ -8,6 +8,7 @@
 <title>门户后台管理</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="pragma" content="no-cache" />
 <link rel="stylesheet" href="${base_path}/static/css/backend/app.v2.css" type="text/css" />
 <script src="${base_path}/static/js/base.js" ></script>
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
@@ -58,28 +59,42 @@
 		<section class="scrollable padder">
 			<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
 				<li><a href="${base_path}/manager"><i class="fa fa-home"></i>后台主页</a></li>
-				<li class="active">模块内容管理</li>
+				<li class="active">部门模块管理</li>
 			</ul>
 			<div class="m-b-md">
-				<h3 class="m-b-none">模块内容管理</h3>
-				<small>这里可以你可以向一个已知模块添加一条内容。</small> </div>
+				<h3 class="m-b-none">模块管理</h3>
+				<small>这里可以选择${service.S_NAME }首页展示的模块。</small> </div>
 			<section class="panel panel-default">
 			</section>
 			<div>
-				<h4 class="m-t-xs">模块列表</h4>
-				<div id="sm-modules">
-					<c:forEach items="${dms }" var="dm">
-					<div class="col-md-3 col-sm-6 col-xs-6">
-						<section class="panel panel-default">
-						<header class="panel-heading bg-info lt no-border h4" style="cursor:pointer;">${dm.DM_NAME }</header>
-						<h4>&nbsp;&nbsp;${dm.DM_SERVICE }</h4>
-						<div class="doc-buttons">
-							&nbsp;&nbsp;<a class="btn btn-info btn-xs" href="${base_path}/news/manager/${dm.DM_ID}">浏览内容</a>
-							<a class="btn btn-danger btn-xs" href="${base_path}/news/add/${dm.DM_ID}">添加内容</a>
-						</div>
-						</section>
+				<div style="margin-bottom:5px;">
+					<button class="btn btn-s-md btn-success" onclick="service_save();">保存配置</button>
+					<button class="btn btn-s-md btn-success" onclick="tourist_save();">保存游客配置</button>
+					<br>
+				</div>
+				<section class="panel panel-default">
+				</section>
+				<div class="col-md-6">
+					<h4 class="m-t-xs">模块列表</h4>
+					<div id="sm-modules">
 					</div>
-					</c:forEach>
+				</div>
+				<div class="col-md-6">
+					<h4 class="m-t-xs">模块仓库</h4>
+					<div>
+						<ul id="sm-modules-all" class="list-group gutter list-group-lg list-group-sp sortable">
+						<c:forEach items="${dms }" var="dm">
+						<li class="list-group-item">
+							<span class="pull-right" >
+								<i>${dm.DM_SERVICE }</i>
+								<span targetid="${dm.DM_ID}" targetname="${dm.DM_NAME }" targetservice="${dm.DM_SERVICE }" onclick="addModule(this);" style="cursor:pointer;"><i class="fa fa-plus icon-muted fa-fw m-r-xs bg-info"></i></span>
+							</span>
+							<span class="pull-left media-xs"><i class="fa fa-dot-circle-o"></i></span>
+							<a class="clear">${dm.DM_NAME }</a>
+						</li>
+						</c:forEach>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -89,14 +104,19 @@
 	</section>
 	</section>
 </section>
+<div style="display:none">
+	<div id="queue">${service.S_LIST }</div>
+</div>
 <script src="${base_path}/static/js/backend/app.v2.js"></script>
 <script src="${base_path}/static/js/jquery-ui.min.js" ></script>
+<script src="${base_path}/static/js/backend/subModule.js"></script>
 <script>
 	$("#sm-modules").sortable({
 		handle: ".panel-heading",
 	});
-	    $("#sm-modules").disableSelection();
-	    $("#l2").attr('class','active');
+	$("#sm-modules").disableSelection();
+	init();
+	$("#l5").attr('class','active');
 </script>
 </body>
 </html>

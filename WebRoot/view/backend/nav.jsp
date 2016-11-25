@@ -7,7 +7,7 @@
 		<div class="btn-group">
 			<a type="button" class="btn btn-sm btn-dark btn-icon" title="New project"><i class="fa fa-home"></i></a>
 			<div class="btn-group hidden-nav-xs">
-			<a href="/" type="button" class="btn btn-sm btn-primary">回到前台</a>
+			<a href="${base_path}/" type="button" class="btn btn-sm btn-primary">回到前台</a>
 			</div>
 		</div>
 	</header>
@@ -15,24 +15,30 @@
 		<div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333"><!-- nav -->
 		<nav class="nav-primary hidden-xs">
 			<ul class="nav">
-				<li id="l0"><a href="/manager"><i class="fa fa-dashboard icon"><b class="bg-danger"></b></i><span>管理仪表盘</span></a></li>
+				<li id="l0"><a href="${base_path}/manager"><i class="fa fa-dashboard icon"><b class="bg-danger"></b></i><span>管理仪表盘</span></a></li>
 				<li id="l1"><a href="#down"><i class="fa fa-columns icon"><b class="bg-warning"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>展示模块管理</span></a>
 					<ul class="nav lt">
-						<li><a href="/module/manager"><i class="fa fa-asterisk"></i><span>模块管理</span></a></li>
-						<li><a href="/module/add"><i class="fa fa-plus"></i><span>增加模块</span></a></li>
+						<li><a href="${base_path}/module/manager"><i class="fa fa-asterisk"></i><span>模块管理</span></a></li>
+						<li><a href="${base_path}/module/add"><i class="fa fa-plus"></i><span>增加模块</span></a></li>
 					</ul>
 				</li>
-				<li id="l2"><a href="/module/issued"><i class="fa fa-credit-card icon"><b class="bg-primary dker"></b></i><span>模块内容管理</span></a></li>
+				<li id="l2"><a href="${base_path}/module/issued"><i class="fa fa-credit-card icon"><b class="bg-primary dker"></b></i><span>模块内容管理</span></a></li>
 				<li id="l3"><a href="#down"><i class="fa fa-fire icon"><b class="bg-success"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>应用管理</span></a>
 					<ul class="nav lt">
-						<li><a href="/app/manager"><i class="fa fa-asterisk"></i><span>应用管理</span></a></li>
-						<li><a href="/app/add"><i class="fa fa-plus"></i><span>增加应用</span></a></li>
+						<li><a href="${base_path}/app/manager"><i class="fa fa-asterisk"></i><span>应用管理</span></a></li>
+						<li><a href="${base_path}/app/add"><i class="fa fa-plus"></i><span>增加应用</span></a></li>
 					</ul>
 				</li>
 				<li id="l4"><a href="#down"><i class="fa fa-calendar icon"><b class="bg-info"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>首页个性化</span></a>
 					<ul class="nav lt">
-						<li><a href="/user/addAPP"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
-						<li><a href="/user/addModule"><i class="fa fa-plus"></i><span>订阅模块</span></a></li>
+						<li><a href="${base_path}/user/addAPP"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
+						<li><a href="${base_path}/user/addModule"><i class="fa fa-plus"></i><span>订阅模块</span></a></li>
+					</ul>
+				</li>
+				<li id="l5"><a href="#down"><i class="fa fa-flag icon"><b class="bg-danger"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>部门管理</span></a>
+					<ul class="nav lt">
+						<li><a href="${base_path}/service/addModule"><i class="fa fa-plus"></i><span>部门模块管理</span></a></li>
+						<li><a href="${base_path}/service/addAPP"><i class="fa fa-plus"></i><span>部门应用管理</span></a></li>
 					</ul>
 				</li>
 			</ul>

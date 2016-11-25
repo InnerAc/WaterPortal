@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-<script src="/static/js/jquery-2.1.4.js"></script>
-<script src="/static/js/myjs/pullmodule.js"></script>
-<script src="/static/js/myjs/index.js"></script>
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/bootstrap.css" />
+<script src="${base_path}/static/js/base.js" ></script>
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
+<script src="${base_path}/static/js/myjs/pullmodule.js"></script>
+<script src="${base_path}/static/js/myjs/index.js"></script>
 <style type="text/css">
 table{
 	table-layout: fixed;
@@ -32,7 +33,7 @@ td{
 <body>
 	<div style="width:90%;margin:5%;margin-top:1%;">
 		<div>
-			<div style="float:left"><img style="width:80%;" src="/static/image/logo.png"></div>
+			<div style="float:left"><img style="width:80%;" src="${base_path}/static/image/logo.png"></div>
 			<div>
 				<h2>江苏省水利厅门户系统</h2>
 				<h5>Jiangsu Water Resources Portal</h5>
@@ -44,7 +45,7 @@ td{
 			<div class="col-md-10">
 			<c:forEach items="${apps }" var="app">
 				<div class="col-md-1"><center>
-				<a href="${app.A_URL }"><img class="img-responsive" alt="${app.A_NAME }" src="/static/icon/${app.A_ICON }"/>
+				<a href="${app.A_URL }"><img class="img-responsive" alt="${app.A_NAME }" src="${base_path}/static/icon/${app.A_ICON }"/>
 				<span>${app.A_NAME }</span>
 				</a>
 				</center></div>
@@ -66,8 +67,8 @@ td{
 					</form>
 					</c:if>
 					<c:if test="${userid !=null }">
-						<a href="/logout" class="btn btn-warning">退出</a>
-						<a href="/manager" class="btn btn-success">管理</a>
+						<a href="${base_path}/logout" class="btn btn-warning">退出</a>
+						<a href="${base_path}/manager" class="btn btn-success">管理</a>
 					</c:if>
 				</div> 
 			</div>
@@ -88,7 +89,7 @@ td{
 					<h3 class="panel-title">实时水雨情</h3>
 				</div>
 				<div class="panel-body">
-					<img class="col-md-12" src="/static/image/sssyq.PNG">
+					<img class="col-md-12" src="${base_path}/static/image/sssyq.PNG">
 				</div>
 			</div>
 			</div>
@@ -98,7 +99,7 @@ td{
 					<h3 class="panel-title">实时视频</h3>
 				</div>
 				<div class="panel-body">
-					<img class="col-md-12" src="/static/image/sssp.jpg">
+					<img class="col-md-12" src="${base_path}/static/image/sssp.jpg">
 				</div>
 			</div>
 			</div>
@@ -108,7 +109,7 @@ td{
 					<h3 class="panel-title">实时工情</h3>
 				</div>
 				<div class="panel-body">
-					<img class="col-md-12" src="/static/image/ssgq.jpg">
+					<img class="col-md-12" src="${base_path}/static/image/ssgq.jpg">
 				</div>
 			</div>
 			</div>

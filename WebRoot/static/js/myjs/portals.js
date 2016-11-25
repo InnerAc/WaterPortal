@@ -3,9 +3,9 @@ function fillapps(){
 	var appdiv = $('#apps');
 	res = ''
 	for(i=0;i<apps.length;i++){
-		res += '<div class="col-md-1 col-sm-3"><center><a href=""><img class="img-responsive img-circle" alt="'
+		res += '<div class="col-md-1 col-sm-3"><center><a href='+base_path+'""><img class="img-responsive img-circle" alt="'
 		res += apps[i][1];
-		res += '" src="icon/';
+		res += '" src="'+base_path+'icon/';
 		res += apps[i][0];
 		res += '.png"/><span>'
 		res += apps[i][1];
@@ -15,11 +15,9 @@ function fillapps(){
 }
 
 function genModules(){
+	console.log(base_path);
 	dm_ids = $('#dm_queue').html();
-	if(dm_ids == null || dm_ids == ''){
-		return ;
-	}
-	$.get('/module/modules/'+dm_ids,function(data){
+	$.get(base_path+'/module/modules/'+dm_ids,function(data){
 		dmodules = '';
 		nn = data.length;
 		for(var j=0;j<nn;j++){
@@ -59,15 +57,12 @@ function genModule(module){
 
 function genAPPS(){
 	app_ids = $('#app_queue').html();
-	if(app_ids == null || app_ids == ''){
-		return ;
-	}
-	$.get('/app/list/'+app_ids,function(data){
+	$.get(base_path+'/app/list/'+app_ids,function(data){
 		appshtml = '';
 		nn = data.length;
 		for(j =0;j<nn;j++){
 			app = data[j];
-			appshtml += '<div class="col-md-1 col-sm-3"><center><a href="'+app.A_URL+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a href='+base_path+'"'+app.A_URL+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();

@@ -8,14 +8,15 @@
 <title>门户后台管理</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="stylesheet" href="/static/css/backend/app.v2.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/backend/appstyle.css" type="text/css" />
+<link rel="stylesheet" href="${base_path}/static/css/backend/app.v2.css" type="text/css" />
+<script src="${base_path}/static/js/base.js" ></script>
+<link rel="stylesheet" href="${base_path}/static/css/backend/appstyle.css" type="text/css" />
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
 <section class="vbox">
 	<header class="bg-dark dk header navbar navbar-fixed-top-xs">
-		<div class="navbar-header aside-md"> <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a> <a href="#" class="navbar-brand" data-toggle="fullscreen"><img src="/static/image/logo.png" class="m-r-sm">后台管理</a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> </div>
+		<div class="navbar-header aside-md"> <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a> <a href="#" class="navbar-brand" data-toggle="fullscreen"><img src="${base_path}/static/image/logo.png" class="m-r-sm">后台管理</a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> </div>
 		<ul class="nav navbar-nav navbar-right hidden-xs nav-user">
 		<li class="dropdown hidden-xs"> <a href="#" class="dropdown-toggle dker" data-toggle="dropdown"><i class="fa fa-fw fa-search"></i></a>
 			<section class="dropdown-menu aside-xl animated fadeInUp">
@@ -36,14 +37,14 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<span class="thumb-sm avatar pull-left">
-				<img src="/static/image/avatar_default.jpg">
+				<img src="${base_path}/static/image/avatar_default.jpg">
 				</span>${user.U_NAME }<b class="caret"></b>
 			</a>
 			<ul class="dropdown-menu animated fadeInRight">
 				<span class="arrow top"></span>
 				<li> <a href="#">个人设置</a> </li>
 				<li class="divider"></li>
-				<li> <a href="/logout" data-toggle="ajaxModal" >登出</a> </li>
+				<li> <a href="${base_path}/logout" data-toggle="ajaxModal" >登出</a> </li>
 			</ul>
 		</li>
 		</ul>
@@ -57,7 +58,7 @@
 		<section class="vbox">
 		<section class="scrollable padder">
 			<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
-				<li><a href="/manager"><i class="fa fa-home"></i>后台主页</a></li>
+				<li><a href="${base_path}/manager"><i class="fa fa-home"></i>后台主页</a></li>
 				<li class="active">应用管理</li>
 			</ul>
 			<div class="m-b-md">
@@ -85,7 +86,7 @@
 						<input type="file" id="file" name="file"></input>
 					</div><br>
 					<input type="submit" class="btn btn-default" value="提交">
-					<a href="/app/manager" class="btn btn-warning">返回</a>
+					<a href="${base_path}/app/manager" class="btn btn-warning">返回</a>
 				</form>
 			</div>
 		</section>
@@ -95,8 +96,8 @@
 	</section>
 	</section>
 </section>
-<script src="/static/js/backend/app.v2.js"></script>
-<script src="/static/js/jquery-ui.min.js" ></script>
+<script src="${base_path}/static/js/backend/app.v2.js"></script>
+<script src="${base_path}/static/js/jquery-ui.min.js" ></script>
 <script>
 	    $("#l3").attr('class','active');
 </script>

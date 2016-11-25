@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-<script src="/static/js/jquery-2.1.4.js"></script>
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/bootstrap.css" />
+<script src="${base_path}/static/js/base.js" ></script>
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
 <style type="text/css">
 table{
 	table-layout: fixed;
@@ -29,13 +30,13 @@ td{
 		</div>
 		<br><br>
 		<div>
-			<a class="btn btn-success" href="/module/manager">模块管理</a>
+			<a class="btn btn-success" href="${base_path}/module/manager">模块管理</a>
 			&nbsp;&nbsp;
-			<a class="btn btn-primary" href="/module/issued">新闻发布</a>
+			<a class="btn btn-primary" href="${base_path}/module/issued">新闻发布</a>
 			&nbsp;&nbsp;
-			<a class="btn btn-info" href="/">返回主页</a>
+			<a class="btn btn-info" href="${base_path}/">返回主页</a>
 			&nbsp;&nbsp;
-			<a class="btn btn-warning" href="/"></a>
+			<a class="btn btn-warning" href="${base_path}/"></a>
 			<br>
 		</div>
 	</div>

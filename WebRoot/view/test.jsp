@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/summernote.css" />
-<script src="/static/js/jquery-2.1.4.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/summernote.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/summernote.css" />
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
+<script src="${base_path}/static/js/bootstrap.min.js"></script>
+<script src="${base_path}/static/js/summernote.min.js"></script>
 <title>测试页面</title>
 </head>
 <body>
