@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.jfinal.core.Controller;
+import com.jfinal.upload.UploadFile;
 
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.News;
@@ -62,7 +63,9 @@ public class NewsController extends Controller{
 	public void add(){
 		if(getRequest().getMethod().equals("GET")){
 			String dmid = getPara();
-			String dmname = DisplayModule.dao.findNAMEbyID(dmid);
+			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			String dmname = dm.getStr("DM_NAME");
+			String dmtype = dm.getStr("DM_TYPE");
 			String userid = getSessionAttr("userid");
 			if(dmid == null || dmid.equals("")){
 				return;
@@ -70,7 +73,17 @@ public class NewsController extends Controller{
 			setAttr("userid", userid);
 			setAttr("dmid", dmid);
 			setAttr("dmname", dmname);
-			render("/view/backend/addNews.jsp");
+			setAttr("dmtype", dmtype);
+			if(dm.getStr("DM_TYPE").equals("3")){
+				render("/view/backend/addPIC.jsp");
+			}else if(dm.getStr("DM_TYPE").equals("4")){
+				List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
+				setAttr("mydm", dm);
+				setAttr("dms", dms);
+				render("/view/backend/editModulesssss.jsp");
+			}else{
+				render("/view/backend/addNews.jsp");
+			}
 		}
 		if(getRequest().getMethod().equals("POST")){
 			News news = getModel(News.class,"");
@@ -88,6 +101,36 @@ public class NewsController extends Controller{
 		}
 	}
 	
+	public void addPic(){
+		if(getRequest().getMethod().equals("GET")){
+			setAttr("info", "访问错误！！！");
+			setAttr("url", "/");
+			render("/view/success.jsp");
+		}else{
+			UploadFile files = getFile("file","../static/image");
+			String imgName = files.getFileName();
+			News news = new News();
+			long time = new Date().getTime();
+			long id = time%1000000000;
+			String date = Long.toString(time);
+			String nid = Long.toString(id);
+			news.set("N_ID", nid);
+			news.set("N_DATE", date);
+			news.set("N_PICSRC", imgName);
+			news.set("N_TITLE", getPara("N_TITLE"));
+			news.set("N_AUTHOR", getPara("N_AUTHOR"));
+			news.set("N_DMID", getPara("N_DMID"));
+			news.set("N_PICTARGER", getPara("N_PICTARGER"));
+			news.set("N_SHOWALL", getPara("N_SHOWALL"));
+			news.set("N_SHOWSERVICE", getPara("N_SHOWSERVICE"));
+			news.set("N_SHOWUSER", getPara("N_SHOWUSER"));
+			if(news.save()){
+				setAttr("info", "图片发布成功");
+				setAttr("url", "/module/issued");
+				render("/view/success.jsp");
+			}
+		}
+	}
 	/**
 	 * 首先验证用户是否对此模块拥有信息发布的权限<br>
 	 * 编辑新闻<br>
@@ -100,8 +143,20 @@ public class NewsController extends Controller{
 		if(getRequest().getMethod().equals("GET")){
 			String id = getPara();
 			News news = News.dao.findById(id);
+			String dmid = news.getStr("N_DMID");
+			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			String userid = getSessionAttr("userid");
 			setAttr("news", news);
-			render("/view/backend/editNews.jsp");
+			if(dm.getStr("DM_TYPE").equals("3")){
+				render("/view/backend/editPIC.jsp");
+			}else if(dm.getStr("DM_TYPE").equals("4")){
+				List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
+				setAttr("mydm", dm);
+				setAttr("dms", dms);
+				render("/view/backend/editModulesssss.jsp");
+			} else{
+				render("/view/backend/editNews.jsp");
+			}
 		}
 		if(getRequest().getMethod().equals("POST")){
 			News news = getModel(News.class,"");

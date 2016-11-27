@@ -74,6 +74,34 @@
 					<a href="#" class="btn btn-s-md btn-info">首页个性化</a>
 				</div>
 			</div>
+			<div>
+				<section class="panel panel-default">
+				</section>
+				<h4 class="m-t-xs">部门切换</h4>
+				<form action="${base_path }/user/manager" action=POST>
+					<select name="bumen">
+						<option value="水文局">水文局</option>
+						<option value="tourist">tourist</option>
+						<option value="河海大学">河海大学</option>
+						<option value="办公室">办公室</option>
+						<option value="政法处">政法处</option>
+						<option value="规计处">规计处</option>
+						<option value="水资源处">水资源处</option>
+						<option value="工管处">工管处</option>
+						<option value="基建处">基建处</option>
+						<option value="科技处">科技处</option>
+						<option value="财审处">财审处</option>
+						<option value="农村水利处">农村水利处</option>
+						<option value="移民办">移民办</option>
+						<option value="防办">防办</option>
+						<option value="水政总队">水政总队</option>
+						<option value="建设局">建设局</option>
+						<option value="南水北调办">南水北调办</option>
+						<option value="河道局">河道局</option>
+					</select>
+					<input type="submit" value="切换身份"/>
+				</form>
+			</div>
 		</section>
 		</section>
 		<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> 

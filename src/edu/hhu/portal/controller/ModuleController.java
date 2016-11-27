@@ -149,12 +149,42 @@ public class ModuleController extends Controller{
 		for(String dmid : dmidlist){
 			System.out.println(dmid);
 			DisplayModule dm = DisplayModule.dao.findById(dmid);
-			List<News> newss = News.dao.findByDMID(dmid, 7,userid);
 			Map<String, Object> res = new HashMap<String, Object>();
-			res.put("dm", dm);
-			res.put("newss", newss);
+			if(dm.getStr("DM_TYPE").equals("4")){//内容聚合
+				String dmlistes = dm.getStr("DM_LIST");
+				if(dmlistes != null){
+					List<Object> idms = new ArrayList<Object>();
+					String[] dmlists = dmlistes.split(",");
+					for(String dmli : dmlists){
+						Map<String, Object> ires = new HashMap<String, Object>();
+						DisplayModule idm = DisplayModule.dao.findById(dmli);
+						List<News> inewss = News.dao.findByDMID(dmli, 6,userid);
+						ires.put("dm", idm);
+						ires.put("newss", inewss);
+						idms.add(ires);
+					}
+					res.put("dm", dm);
+					res.put("dms", idms);
+				}
+			}else{
+				List<News> newss = News.dao.findByDMID(dmid, 7,userid);
+				res.put("dm", dm);
+				res.put("newss", newss);
+			}
 			list.add(res);
 		}
 		renderJson(list);
+	}
+	
+	public void updateList(){
+		String dmid = getPara("dmid");
+		String list = getPara("list");
+		DisplayModule dm = DisplayModule.dao.findById(dmid);
+		dm.set("DM_LIST", list);
+		if(dm.update()){
+			setAttr("info", "修改模块成功");
+			setAttr("url", "/module/manager");
+			render("/view/success.jsp");
+		}
 	}
 }

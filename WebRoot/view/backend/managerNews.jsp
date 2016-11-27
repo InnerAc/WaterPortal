@@ -104,7 +104,7 @@ function drop(btn){
 	var td = tr.find('.clear')[0];
 	var text = $(td).html();
 	if(confirm('是否删除  '+text)){
-		$.get('/news/delete/'+nid);
+		$.get('${base_path}/news/delete/'+nid);
 		tr.remove();
 	}else{
 		

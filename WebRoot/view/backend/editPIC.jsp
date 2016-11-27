@@ -10,6 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="${base_path}/static/css/backend/app.v2.css" type="text/css" />
 <script src="${base_path}/static/js/base.js" ></script>
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="${base_path}/static/css/summernote.css" />
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
@@ -58,71 +60,55 @@
 		<section class="scrollable padder">
 			<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
 				<li><a href="${base_path}/manager"><i class="fa fa-home"></i>后台主页</a></li>
-				<li class="active">添加展示模块</li>
+				<li><a href="${base_path}/module/issued"><i class="fa fa-desktop"></i>模块内容管理</a></li>
+				<li class="active">添加模块展示图片</li>
 			</ul>
 			<div class="m-b-md">
-				<h3 class="m-b-none">添加展示模块</h3>
-				<small>这里可以看到你可以添加一个展示模块。</small> </div>
+				<h3 class="m-b-none">添加模块展示图片</h3>
+				<small>这里可以看到你可以向展示模块添加一张展示图片。</small> </div>
 			<section class="panel panel-default">
 			</section>
-			<div class="col-md-7 row">
-				<form class="" action="${base_path}/module/add" method="post">
-					<div style="display:none">
-						<input name="DM_ID" type="hidden" value="${dm.DM_ID }"/>
-					</div>
-					<div class="input-group">
-						模块名称:
-						<input class="form-control" name="DM_NAME" type="text" value="${dm.DM_NAME }">
-					</div><br>
-					<div class="input-group">
-						所属部门:
-						<input class="form-control" name="DM_SERVICE" type="text" value="${dm.DM_SERVICE }">
-					</div><br>
-					<div class="input-group">
-						模块类型:
-						<select class="form-control" name="DM_TYPE">
-							<option value="1" >列表新闻</option>
-							<option value="2" >展示公告</option>
-							<option value="3" >图片链接</option>
-							<option value="4" >模块聚合</option>
-						</select>
-					</div><br>
-					<div class="input-group">
-						模块大小:
-						<select class="form-control" name="DM_SIZE">
-							<option value="1" >默认大小(占屏幕33%)</option>
-							<option value="2" >长(占屏幕66%)</option>
-							<option value="3" >超长(占屏幕99%)</option>
-						</select>
-					</div><br>
-					<div class="form-inline">
-						模块管理员(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_EDIT" type="text" value="${userid }">
-					</div><br>
-					<div class="form-inline">
-						信息发布员(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_ISSUED" type="text" value="${userid }">
-					</div><br>
-					<div class="input-group">
-						允许所有人查看:
-						<select class="form-control" name="DM_SHOWALL">
-							<option value="1"  >允许</option>
-							<option value="0" >不允许</option>
-						</select>
-					</div><br>
-					<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
-					<div class="form-group">
-						可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_SHOWSERVICE" type="text" value="${dm.DM_SHOWSERVICE }">
-					</div><br>
-					<div class="form-group">
-						可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_SHOWUSER" type="text" value="${userid }">
-					</div><br>
-					
-					<input class="btn btn-primary" value="提交 " type="submit">&nbsp;&nbsp;
-					<a class="btn btn-warning" href="${base_path}/module/manager">返回</a>
-				</form>
+			<div class="col-md-10 row">
+				<form id="form" class="" action="${base_path}/news/edit" method="post">
+				<div style="display:none">
+					<input name="N_ID" type="hidden" value="${news.N_ID }"/>
+					<input name="N_DATE" type="hidden" value="${news.N_DATE }"/>
+				</div>
+				<div class="input-group">
+					图片主题:
+					<input class="form-control" name="N_TITLE" type="text" value="${news.N_TITLE }" >
+				</div><br>
+				<div class="input-group">
+					作者:
+					<input class="form-control" name="N_AUTHOR" type="text" value="${news.N_AUTHOR }" >
+				</div><br>
+				<div class="form-inline">
+					所属模块:<span>${dmname }</span>
+					<input class="form-control" name="N_DMID" type="hidden" value="${news.N_DMID }"/>		
+				</div><br>
+				<div class="input-group">
+					图片超链接地址(请输入完整地址)：
+					<input class="form-control" name="N_PICTARGER" type="text" value="${news.N_PICTARGER }">
+				</div><br>
+				<div class="input-group">
+					允许所有人查看:
+					<select class="form-control" name="N_SHOWALL">
+						<option value="1" <c:if test="${news.N_SHOWALL== '1'}"> selected="selected" </c:if> >允许</option>
+						<option value="0" <c:if test="${news.N_SHOWALL== '0'}"> selected="selected" </c:if>>不允许</option>
+					</select>
+				</div><br>
+				<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
+				<div class="form-group">
+					可查看该新闻的部门(输入部门名称使用英文逗号隔开):<br>
+					<input class="form-control" name="N_SHOWSERVICE" type="text" value="${news.N_SHOWSERVICE }">
+				</div><br>
+				<div class="form-group">
+					可查看该新闻的用户(输入用户登录名使用英文逗号隔开):<br>
+					<input class="form-control" name="N_SHOWUSER" type="text" value="${news.N_SHOWUSER }">
+				</div>
+				<input type="submit" class="btn btn-success" value="提交"/>
+				<a href="${base_path}/module/issued" class="btn btn-warning">返回</a>
+			</form>
 			</div>
 		</section>
 		</section>
@@ -132,9 +118,8 @@
 	</section>
 </section>
 <script src="${base_path}/static/js/backend/app.v2.js"></script>
-<script src="${base_path}/static/js/jquery-ui.min.js" ></script>
 <script>
-$("#l1").attr('class','active');
+$("#l2").attr('class','active');
 </script>
 </body>
 </html>

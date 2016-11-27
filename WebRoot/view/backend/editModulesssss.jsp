@@ -8,6 +8,7 @@
 <title>门户后台管理</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="pragma" content="no-cache" />
 <link rel="stylesheet" href="${base_path}/static/css/backend/app.v2.css" type="text/css" />
 <script src="${base_path}/static/js/base.js" ></script>
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
@@ -58,71 +59,42 @@
 		<section class="scrollable padder">
 			<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
 				<li><a href="${base_path}/manager"><i class="fa fa-home"></i>后台主页</a></li>
-				<li class="active">添加展示模块</li>
+				<li class="active">模块聚合</li>
 			</ul>
 			<div class="m-b-md">
-				<h3 class="m-b-none">添加展示模块</h3>
-				<small>这里可以看到你可以添加一个展示模块。</small> </div>
+				<h3 class="m-b-none">模块聚合添加</h3>
+				<small>这里可以选择${mydm.DM_NAME }包含的模块。</small> </div>
 			<section class="panel panel-default">
 			</section>
-			<div class="col-md-7 row">
-				<form class="" action="${base_path}/module/add" method="post">
-					<div style="display:none">
-						<input name="DM_ID" type="hidden" value="${dm.DM_ID }"/>
+			<div>
+				<div style="margin-bottom:5px;">
+					<button class="btn btn-s-md btn-success" onclick="update_save();">保存配置</button>
+					<br>
+				</div>
+				<section class="panel panel-default">
+				</section>
+				<div class="col-md-6">
+					<h4 class="m-t-xs">模块列表</h4>
+					<div id="sm-modules">
 					</div>
-					<div class="input-group">
-						模块名称:
-						<input class="form-control" name="DM_NAME" type="text" value="${dm.DM_NAME }">
-					</div><br>
-					<div class="input-group">
-						所属部门:
-						<input class="form-control" name="DM_SERVICE" type="text" value="${dm.DM_SERVICE }">
-					</div><br>
-					<div class="input-group">
-						模块类型:
-						<select class="form-control" name="DM_TYPE">
-							<option value="1" >列表新闻</option>
-							<option value="2" >展示公告</option>
-							<option value="3" >图片链接</option>
-							<option value="4" >模块聚合</option>
-						</select>
-					</div><br>
-					<div class="input-group">
-						模块大小:
-						<select class="form-control" name="DM_SIZE">
-							<option value="1" >默认大小(占屏幕33%)</option>
-							<option value="2" >长(占屏幕66%)</option>
-							<option value="3" >超长(占屏幕99%)</option>
-						</select>
-					</div><br>
-					<div class="form-inline">
-						模块管理员(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_EDIT" type="text" value="${userid }">
-					</div><br>
-					<div class="form-inline">
-						信息发布员(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_ISSUED" type="text" value="${userid }">
-					</div><br>
-					<div class="input-group">
-						允许所有人查看:
-						<select class="form-control" name="DM_SHOWALL">
-							<option value="1"  >允许</option>
-							<option value="0" >不允许</option>
-						</select>
-					</div><br>
-					<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
-					<div class="form-group">
-						可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_SHOWSERVICE" type="text" value="${dm.DM_SHOWSERVICE }">
-					</div><br>
-					<div class="form-group">
-						可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_SHOWUSER" type="text" value="${userid }">
-					</div><br>
-					
-					<input class="btn btn-primary" value="提交 " type="submit">&nbsp;&nbsp;
-					<a class="btn btn-warning" href="${base_path}/module/manager">返回</a>
-				</form>
+				</div>
+				<div class="col-md-6">
+					<h4 class="m-t-xs">模块仓库</h4>
+					<div>
+						<ul id="sm-modules-all" class="list-group gutter list-group-lg list-group-sp sortable">
+						<c:forEach items="${dms }" var="dm">
+						<li class="list-group-item">
+							<span class="pull-right" >
+								<i>${dm.DM_SERVICE }</i>
+								<span targetid="${dm.DM_ID}" targetname="${dm.DM_NAME }" targetservice="${dm.DM_SERVICE }" onclick="addModule(this);" style="cursor:pointer;"><i class="fa fa-plus icon-muted fa-fw m-r-xs bg-info"></i></span>
+							</span>
+							<span class="pull-left media-xs"><i class="fa fa-dot-circle-o"></i></span>
+							<a class="clear">${dm.DM_NAME }</a>
+						</li>
+						</c:forEach>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</section>
 		</section>
@@ -131,10 +103,20 @@
 	</section>
 	</section>
 </section>
+<div style="display:none">
+	<div id="queue">${mydm.DM_LIST }</div>
+	<div id="dmid">${mydm.DM_ID }</div>
+</div>
 <script src="${base_path}/static/js/backend/app.v2.js"></script>
 <script src="${base_path}/static/js/jquery-ui.min.js" ></script>
+<script src="${base_path}/static/js/backend/subModulesssss.js"></script>
 <script>
-$("#l1").attr('class','active');
+	$("#sm-modules").sortable({
+		handle: ".panel-heading",
+	});
+	$("#sm-modules").disableSelection();
+	init();
+	$("#l2").attr('class','active');
 </script>
 </body>
 </html>

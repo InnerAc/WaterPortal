@@ -98,3 +98,35 @@ td{
 	border-radius: 5px;
 	background: #FFFFCC;
 }
+.tab-wrapper .tab-radio{
+	display: none;
+}
+.tab-handler{
+	position: relative;
+	z-index: 2;
+	display: block;
+	float: left;
+	font-size: 16px;
+	transition: .3s;
+	transform: scale(.9);
+}
+.tab-radio:checked + .tab-handler{
+	color: #fff;
+	background-color: #e74c3c;
+}
+.tab-radio:checked + .tab-handler + .tab-content{
+	visibility: visible;
+	opacity: 1;
+	transform: scale(1);
+}
+.tab-wrapper .tab-content{
+	visibility: hidden;
+	position: absolute;
+	top: 60px;
+	left: 0;
+	padding: 30px;
+	font-size: 14px;
+	opacity: 0;
+	transition: transform .5s, opacity .7s;
+	transform: translateY(20px);
+}

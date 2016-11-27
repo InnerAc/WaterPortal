@@ -1,19 +1,3 @@
-function fillapps(){
-	apps = [['dagl','档案管理'],['szyxx','水资源信息管理'],['hhzy','河湖资源'],['gcgl','工程管理'],['hhkxc','河湖库巡查管理'],['stbc','水土保持监测管理'],['ntslsjtb','农田水利数据填报'],['ymgl','水利工程移民'],['fxfh','防汛防旱会商系统'],['szzfgl','水政执法管理'],['hdcs','河道采砂'],['nsbdmh','节水计量与监测监控系统'],['nsbdhs','工程监控系统'],['nsbdddyx','尾水导流工程运行监控系统'],['sqfx','水情分析'],['swsjcx','水文数据查询'],['sssjjh','水文数据交换'],['hdgl','河道管理'],['zyml','数据资源目录服务']];
-	var appdiv = $('#apps');
-	res = ''
-	for(i=0;i<apps.length;i++){
-		res += '<div class="col-md-1 col-sm-3"><center><a href='+base_path+'""><img class="img-responsive img-circle" alt="'
-		res += apps[i][1];
-		res += '" src="'+base_path+'icon/';
-		res += apps[i][0];
-		res += '.png"/><span>'
-		res += apps[i][1];
-		res += '</span></a></center></div>\n';
-	}
-	appdiv.html(res);
-}
-
 function genModules(){
 	console.log(base_path);
 	dm_ids = $('#dm_queue').html();
@@ -39,8 +23,9 @@ function genModule(module){
 	dmodule = '';
 	dmodule += '<div class="col-md-'+size+' col-lg-'+size+' col-sm-12"><div class="module" id="'+dm.DM_ID+'"><div class="mheader1">';
 	dmodule += dm.DM_NAME;
-	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div><div class="mbody">';
-	if(newss.length > 0){//是列表新闻
+	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>';
+	if(dm.DM_TYPE == '1'){//是列表新闻
+		dmodule += '<div class="mbody">';
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;
 		for(i=0;i<n;i++){
@@ -48,8 +33,64 @@ function genModule(module){
 		}
 		mbody += '</tbody></table>';
 		dmodule += mbody;
-	}else{
-		dmodule += "Test";
+	}
+	if(dm.DM_TYPE == '2'){//显示公告
+		dmodule += '<div class="mbody">';
+		if(newss.length > 0){
+			dmodule += '<h4>'+newss[0].N_TITLE+'</h4>';
+			dmodule += newss[0].N_CONTENT;
+		}else{
+			dmodule += '暂无公告';
+		}
+	}
+	if(dm.DM_TYPE == '3'){
+		dmodule += '<div class="mbody">';
+		if(newss.length > 0){
+			dmodule += '<a href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
+		}else{
+			dmodule += '暂无公告';
+		}
+	}
+	if(dm.DM_TYPE == '4'){
+		dmodule += '<div class="mbody tab-wrapper">';
+		idms = module.dms;
+		nnn = idms.length;
+		mbody = '';
+		for(k=0;k<nnn;k++){
+			dm = idms[k].dm;
+			newss = idms[k].newss;
+			if(k == 0){
+				mbody += '<input type="radio" name="tab-radio" class="tab-radio" id="'+dm.DM_ID+'" checked><label for="'+dm.DM_ID+'" class="tab-handler">'+dm.DM_NAME+'</label>';
+			}else{
+				mbody += '<input type="radio" name="tab-radio" class="tab-radio" id="'+dm.DM_ID+'"><label for="'+dm.DM_ID+'" class="tab-handler">'+dm.DM_NAME+'</label>';
+			}
+			mbody += '<div class="tab-content">'
+				if(dm.DM_TYPE == '1'){//是列表新闻
+					mbody += '<table class="table table-condensed table-hover"><tbody>';
+					n = newss.length;
+					for(i=0;i<n;i++){
+						mbody +='<tr><td><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
+					}
+					mbody += '</tbody></table>';
+				}
+				if(dm.DM_TYPE == '2'){//显示公告
+					if(newss.length > 0){
+						mbody += '<h4>'+newss[0].N_TITLE+'</h4>';
+						mbody += newss[0].N_CONTENT;
+					}else{
+						mbody += '暂无公告';
+					}
+				}
+				if(dm.DM_TYPE == '3'){
+					if(newss.length > 0){
+						mbody += '<a href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
+					}else{
+						mbody += '暂无公告';
+					}
+				}
+			mbody += '</div>';
+		}
+		dmodule += mbody;
 	}
 	dmodule += '</div></div></div>';
 	return dmodule;

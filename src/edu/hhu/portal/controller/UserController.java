@@ -48,4 +48,17 @@ public class UserController extends Controller{
 		setAttr("url", "/");
 		render("/view/success.jsp");
 	}
+	public void manager(){
+		String userid = getSessionAttr("userid");
+		USER user = USER.dao.findById(userid);
+		String U_SERVICE = getPara("bumen");
+		System.out.println(U_SERVICE);
+		System.out.println(user.getStr("U_SERVICE"));
+		user.set("U_SERVICE", U_SERVICE);
+		user.update();
+		System.out.println(user);
+		setSessionAttr("user", user);
+		setAttr("user", user);
+		render("/view/backend/backindex.jsp");
+	}
 }

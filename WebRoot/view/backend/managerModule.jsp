@@ -103,7 +103,7 @@
 		var td = tr.find('header')[0];
 		var text = $(td).html();
 		if(confirm('是否删除   '+text)){
-			$.get('/module/delete/'+dmid);
+			$.get('${base_path}/module/delete/'+dmid);
 			tr.remove();
 		}else{
 			
