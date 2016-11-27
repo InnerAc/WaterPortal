@@ -68,7 +68,7 @@
 			</section>
 			<div>
 				<h4 class="m-t-xs">增加应用</h4>
-				<form action="/app/add" method="post" enctype="multipart/form-data" >
+				<form action="${base_path}/app/add" method="post" enctype="multipart/form-data" >
 					<div class="input-group">
 						应用名称:
 						<input class="form-control" name="A_NAME" type="text" />

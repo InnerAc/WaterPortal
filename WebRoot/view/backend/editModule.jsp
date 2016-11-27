@@ -66,7 +66,7 @@
 			<section class="panel panel-default">
 			</section>
 			<div class="col-md-7 row">
-				<form class="" action="/module/edit" method="post">
+				<form class="" action="${base_path}/module/edit" method="post">
 					<div style="display:none">
 						<input name="DM_ID" type="hidden" value="${dm.DM_ID }"/>
 					</div>

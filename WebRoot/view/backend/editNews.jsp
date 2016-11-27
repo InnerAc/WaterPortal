@@ -69,7 +69,7 @@
 			<section class="panel panel-default">
 			</section>
 			<div class="col-md-10 row">
-				<form class="" action="/news/edit" method="post">
+				<form class="" action="${base_path}/news/edit" method="post">
 					<div style="display:none">
 						<input name="N_ID" type="hidden" value="${news.N_ID }"/>
 						<input name="N_DATE" type="hidden" value="${news.N_DATE }"/>

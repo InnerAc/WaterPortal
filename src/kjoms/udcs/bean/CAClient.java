@@ -41,6 +41,8 @@ public class CAClient {
 			user.set("U_SERVICE", serviceName);
 			user.save();
 		}
+		user.set("U_TOKEN", token);
+		user.update();
 		return flag;
 	}
 }

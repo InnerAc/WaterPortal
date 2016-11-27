@@ -69,7 +69,7 @@
 			<section class="panel panel-default">
 			</section>
 			<div class="col-md-10 row">
-				<form id="form" class="" action="/news/add" method="post">
+				<form id="form" class="" action="${base_path}/news/add" method="post">
 				<div class="input-group">
 					新闻标题:
 					<input class="form-control" name="N_TITLE" type="text" >

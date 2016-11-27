@@ -68,7 +68,7 @@
 			</section>
 			<div>
 				<h4 class="m-t-xs">编辑应用</h4>
-				<form action="/app/edit" method="post" >
+				<form action="${base_path}/app/edit" method="post" >
 					<div style="display:none">
 						<input type="hidden" name="A_ID" value="${app.A_ID }"/>
 					</div>

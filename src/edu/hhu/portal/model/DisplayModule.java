@@ -13,13 +13,13 @@ public class DisplayModule extends Model<DisplayModule>{
 	}
 	
 	public List<DisplayModule> findManageModules(String user){
-		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_EDIT LIKE '%"+user+"%'";
+		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_EDIT LIKE '%"+user+"%' or DM_SHOWALL=1";
 		System.out.println(sql);
 		return find(sql);
 	}
 	
 	public List<DisplayModule> findIssuedModules(String user){
-		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_ISSUED LIKE '%"+user+"%'";
+		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_ISSUED LIKE '%"+user+"%' or DM_SHOWALL=1";
 		System.out.println(sql);
 		return find(sql);
 	}

@@ -44,7 +44,7 @@ function genModule(module){
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;
 		for(i=0;i<n;i++){
-			mbody +='<tr><td>'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
+			mbody +='<tr><td><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
 		}
 		mbody += '</tbody></table>';
 		dmodule += mbody;
@@ -56,13 +56,15 @@ function genModule(module){
 }
 
 function genAPPS(){
+	username = encodeURI(encodeURI($('#service_name').html()));
+	token = $('#token').html();
 	app_ids = $('#app_queue').html();
 	$.get(base_path+'/app/list/'+app_ids,function(data){
 		appshtml = '';
 		nn = data.length;
 		for(j =0;j<nn;j++){
 			app = data[j];
-			appshtml += '<div class="col-md-1 col-sm-3"><center><a href='+base_path+'"'+app.A_URL+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a href="'+app.A_URL+'?token='+token+'&username='+username+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();

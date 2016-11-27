@@ -68,7 +68,7 @@
 			</section>
 			<div>
 				<h4 class="m-t-xs">修改图标</h4>
-				<form action="/app/img" method="post" enctype="multipart/form-data" >
+				<form action="${base_path}/app/img" method="post" enctype="multipart/form-data" >
 					<div style="display:none">
 						<input type="hidden" name="A_ID" value="${app.A_ID }"/>
 					</div>
