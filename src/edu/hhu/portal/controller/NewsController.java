@@ -29,6 +29,14 @@ public class NewsController extends Controller{
 	 * 返回新闻列表
 	 */
 	public void list(){
+		String dmid = getPara();
+		String userid = getSessionAttr("userid");
+		if(userid == null){
+			userid = "NUL";
+		}
+		List<News> newss = News.dao.findByDMID(dmid, userid);
+		setAttr("newss", newss);
+		render("/view/newss.jsp");
 	}
 	
 	/**

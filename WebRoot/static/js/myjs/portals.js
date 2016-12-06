@@ -25,6 +25,9 @@ function genModule(module){
 	dmodule += dm.DM_NAME;
 	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>';
 	if(dm.DM_TYPE == '1'){//是列表新闻
+		dmodule = dmodule.substring(0,dmodule.length-161);
+		dmodule += '<a href="'+base_path+'/news/list/'+dm.DM_ID+'" style="color:#fff;"><span class="glyphicon glyphicon-align-justify"></span></a>\n';
+		dmodule += '<span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>'
 		dmodule += '<div class="mbody">';
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;

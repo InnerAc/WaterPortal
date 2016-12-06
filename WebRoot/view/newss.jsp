@@ -16,9 +16,9 @@
 		<c:forEach items="${newss }" var="news">
 			<tr>
 				<td>${news.N_service }</td>
-				<td><a href="${base_path}/news/${news.N_id}">${news.N_title }</a></td>
-				<td>${news.N_author }</td>
-				<td>${news.N_date }</td>
+				<td><a href="${base_path}/news/${news.N_ID}">${news.N_TITLE }</a></td>
+				<td>${news.N_AUTHER }</td>
+				<td>${news.N_DATE }</td>
 			</tr>
 		</c:forEach>
 	</tbody></table>

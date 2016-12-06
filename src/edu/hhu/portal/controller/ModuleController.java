@@ -148,10 +148,9 @@ public class ModuleController extends Controller{
 		List<Object> list = new ArrayList<Object>();
 		for(String dmid : dmidlist){
 			System.out.println(dmid);
-			DisplayModule dm = null;
-			try {
-				dm = DisplayModule.dao.findById(dmid);
-			} catch (Exception e) {
+			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			if(dm == null){
+				System.out.println(dmid+" is null");
 				continue;
 			}
 			Map<String, Object> res = new HashMap<String, Object>();
@@ -162,10 +161,8 @@ public class ModuleController extends Controller{
 					String[] dmlists = dmlistes.split(",");
 					for(String dmli : dmlists){
 						Map<String, Object> ires = new HashMap<String, Object>();
-						DisplayModule idm = null;
-						try {
-							idm = DisplayModule.dao.findById(dmli);
-						} catch (Exception e) {
+						DisplayModule idm = DisplayModule.dao.findById(dmli);
+						if(idm == null){
 							continue;
 						}
 						List<News> inewss = News.dao.findByDMID(dmli, 6,userid);
