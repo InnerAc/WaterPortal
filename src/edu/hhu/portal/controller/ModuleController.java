@@ -165,7 +165,7 @@ public class ModuleController extends Controller{
 						if(idm == null){
 							continue;
 						}
-						List<News> inewss = News.dao.findByDMID(dmli, 6,userid);
+						List<News> inewss = News.dao.findByDMID(dmli, 5,userid);
 						ires.put("dm", idm);
 						ires.put("newss", inewss);
 						idms.add(ires);

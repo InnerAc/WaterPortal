@@ -32,7 +32,7 @@ function genModule(module){
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;
 		for(i=0;i<n;i++){
-			mbody +='<tr><td><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
+			mbody +='<tr><td  width="75%"><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
 		}
 		mbody += '</tbody></table>';
 		dmodule += mbody;
@@ -71,6 +71,7 @@ function genModule(module){
 				if(dm.DM_TYPE == '1'){//是列表新闻
 					mbody += '<table class="table table-condensed table-hover"><tbody>';
 					n = newss.length;
+					mbody += '<tr><td width="75%"></td><td style="float:right"><a href="'+base_path+'/news/list/'+dm.DM_ID+'">更多>></a></td></tr>'
 					for(i=0;i<n;i++){
 						mbody +='<tr><td><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
 					}
