@@ -55,7 +55,7 @@ function genModule(module){
 		dmodule += '<div class="mbody tab-wrapper">';
 		idms = module.dms;
 		nnn = idms.length;
-		mbody = '';
+		mbody = '<form>';
 		for(k=0;k<nnn;k++){
 			dm = idms[k].dm;
 			newss = idms[k].newss;
@@ -90,6 +90,7 @@ function genModule(module){
 				}
 			mbody += '</div>';
 		}
+		mbody += '</form>';
 		dmodule += mbody;
 	}
 	dmodule += '</div></div></div>';

@@ -75,6 +75,7 @@
 				</div>
 			</div>
 			<div>
+				<c:if test="${user.U_USERID eq 'innerac' }">
 				<section class="panel panel-default">
 				</section>
 				<h4 class="m-t-xs">部门切换</h4>
@@ -101,6 +102,7 @@
 					</select>
 					<input type="submit" value="切换身份"/>
 				</form>
+			</c:if>
 			</div>
 		</section>
 		</section>

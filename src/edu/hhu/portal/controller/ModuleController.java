@@ -148,7 +148,12 @@ public class ModuleController extends Controller{
 		List<Object> list = new ArrayList<Object>();
 		for(String dmid : dmidlist){
 			System.out.println(dmid);
-			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			DisplayModule dm = null;
+			try {
+				dm = DisplayModule.dao.findById(dmid);
+			} catch (Exception e) {
+				continue;
+			}
 			Map<String, Object> res = new HashMap<String, Object>();
 			if(dm.getStr("DM_TYPE").equals("4")){//内容聚合
 				String dmlistes = dm.getStr("DM_LIST");
@@ -157,7 +162,12 @@ public class ModuleController extends Controller{
 					String[] dmlists = dmlistes.split(",");
 					for(String dmli : dmlists){
 						Map<String, Object> ires = new HashMap<String, Object>();
-						DisplayModule idm = DisplayModule.dao.findById(dmli);
+						DisplayModule idm = null;
+						try {
+							idm = DisplayModule.dao.findById(dmli);
+						} catch (Exception e) {
+							continue;
+						}
 						List<News> inewss = News.dao.findByDMID(dmli, 6,userid);
 						ires.put("dm", idm);
 						ires.put("newss", inewss);

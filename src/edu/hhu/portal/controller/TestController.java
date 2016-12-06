@@ -1,6 +1,11 @@
 package edu.hhu.portal.controller;
 
+import java.util.List;
+
 import com.jfinal.core.Controller;
+
+import edu.hhu.portal.model.DisplayModule;
+import edu.hhu.portal.model.News;
 
 public class TestController extends Controller{
 	public void index(){
