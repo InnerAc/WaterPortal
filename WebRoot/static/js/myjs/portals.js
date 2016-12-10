@@ -92,10 +92,16 @@ function genModule(module){
 						mbody += '暂无公告';
 					}
 				}
+				if(dm.DM_TYPE == '5'){
+					mbody += '<iframe height="100%" width="100%" src="gis"></iframe>'
+				}
 			mbody += '</div>';
 		}
 		mbody += '</form>';
 		dmodule += mbody;
+	}
+	if(dm.DM_TYPE == '5'){
+		dmodule += '<div class="mbody">  <iframe height="100%" width="100%" src="gis"></iframe>';
 	}
 	dmodule += '</div></div></div>';
 	return dmodule;

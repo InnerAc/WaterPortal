@@ -23,7 +23,7 @@ border-radius: 10px;
 border: 1px solid #cccccc;
 bottom: 12px;
 left: -50px;
-min-width: 280px;
+min-width: 140px;
 }
 .ol-popup:after, .ol-popup:before {
 top: 100%;
@@ -58,7 +58,7 @@ content: "✖";
 </style>
 </head>
 <body>
-<div id="mapMain">
+<div id="mapMain" style="width:110%;">
 </div>
 <div id="popup" class="ol-popup">
 	<a href="#" id="popup-closer" class="ol-popup-closer"></a>

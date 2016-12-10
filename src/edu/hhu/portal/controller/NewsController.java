@@ -91,6 +91,10 @@ public class NewsController extends Controller{
 				setAttr("mydm", dm);
 				setAttr("dms", dms);
 				render("/view/backend/editModulesssss.jsp");
+			}else if(dm.getStr("DM_TYPE").equals("5")){
+				setAttr("info", "该模块不允许修改");
+				setAttr("url", "/module/issued");
+				render("/view/success.jsp");
 			}else{
 				render("/view/backend/addNews.jsp");
 			}

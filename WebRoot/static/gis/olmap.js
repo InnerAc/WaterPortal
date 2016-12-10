@@ -113,7 +113,6 @@ $(document).ready(function() {
 
     
     select.on('select', function(e) {
-    	console.log("hahahah");
     	var feature = e.target.getFeatures().getArray()[0];
     	if(feature != null){
     		var id = feature.get('id');

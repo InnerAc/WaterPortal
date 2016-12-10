@@ -79,7 +79,24 @@
 					</div><br>
 					<div class="input-group">
 						部门名称:
-						<input class="form-control" name="A_SERVICE" type="text" />
+						<select class="form-control" name="A_SERVICE">
+						<option value="水文局">水文局</option>
+						<option value="办公室">办公室</option>
+						<option value="政法处">政法处</option>
+						<option value="规计处">规计处</option>
+						<option value="水资源处">水资源处</option>
+						<option value="工管处">工管处</option>
+						<option value="基建处">基建处</option>
+						<option value="科技处">科技处</option>
+						<option value="财审处">财审处</option>
+						<option value="农村水利处">农村水利处</option>
+						<option value="移民办">移民办</option>
+						<option value="防办">防办</option>
+						<option value="水政总队">水政总队</option>
+						<option value="建设局">建设局</option>
+						<option value="南水北调办">南水北调办</option>
+						<option value="河道局">河道局</option>
+					</select>
 					</div><br>
 					<div class="input-group">
 						应用图标:
@@ -96,10 +113,24 @@
 	</section>
 	</section>
 </section>
+<div style="display:none">
+<div id="bumen">${user.U_SERVICE }</div>
+</div>
 <script src="${base_path}/static/js/backend/app.v2.js"></script>
 <script src="${base_path}/static/js/jquery-ui.min.js" ></script>
 <script>
 	    $("#l3").attr('class','active');
+	    ops = $('select[name=A_SERVICE]').find('option');
+	    for(i=0;i<16;i++){
+	    	op = ops[i];
+	    	console.log(op.value +' '+ $('#bumen').html());
+	    	console.log(op.value == $('#bumen').html());
+	    	isok = op.value == $('#bumen').html();
+	    	if(isok){
+	    		op.setAttribute('selected','true');
+	    		break;
+	    	}
+	    }
 </script>
 </body>
 </html>

@@ -51,11 +51,6 @@
 	        </div>
 	        <div class="modules row" id="show_modules">
 	        </div>
-	        <div class="col-md-4 col-lg-4 col-sm-12"><div class="module"><div class="mheader1">实时水雨情<div style="float:right;"><span class="glyphicon glyphicon-move"></span>
-				<span class="glyphicon glyphicon-refresh"></span>
-				<span class="glyphicon glyphicon-chevron-up"></span></div></div><div class="mbody">
-				  <iframe height="100%" width="100%" src="gis"></iframe>
-				</div></div></div>
 	        </div>
         <div>
     	<%@include file="footer.jsp" %>
