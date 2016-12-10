@@ -35,6 +35,8 @@ public class NewsController extends Controller{
 			userid = "NUL";
 		}
 		List<News> newss = News.dao.findByDMID(dmid, userid);
+		DisplayModule dm = DisplayModule.dao.findById(dmid);
+		setAttr("dm", dm);
 		setAttr("newss", newss);
 		render("/view/newss.jsp");
 	}

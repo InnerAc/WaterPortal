@@ -110,7 +110,7 @@ function genAPPS(){
 		nn = data.length;
 		for(j =0;j<nn;j++){
 			app = data[j];
-			appshtml += '<div class="col-md-1 col-sm-3"><center><a href="'+app.A_URL+'?token='+token+'&username='+username+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?token='+token+'&username='+username+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();

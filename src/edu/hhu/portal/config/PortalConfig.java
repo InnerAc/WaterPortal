@@ -16,6 +16,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 
 import edu.hhu.portal.controller.APPController;
+import edu.hhu.portal.controller.GISController;
 import edu.hhu.portal.controller.ModuleController;
 import edu.hhu.portal.controller.NewsController;
 import edu.hhu.portal.controller.PageController;
@@ -47,6 +48,7 @@ public class PortalConfig extends JFinalConfig{
 		me.add("/user",UserController.class);
 		me.add("/app",APPController.class);
 		me.add("/service",ServiceController.class);
+		me.add("/gis",GISController.class);
 		me.add("/",PageController.class);
 	}
 

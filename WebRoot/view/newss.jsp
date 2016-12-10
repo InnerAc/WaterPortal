@@ -12,10 +12,11 @@
 </head>
 <body>
 	<div style="width:80%;margin:10%;">
+	<h2 style="text-align:center;">${dm.DM_NAME }</h2>
 	<table class="table table-condensed table-hover"><tbody>
 		<c:forEach items="${newss }" var="news">
 			<tr>
-				<td>${news.N_service }</td>
+				<td width="1%"><span style="color:#0030bd;" class="glyphicon glyphicon-tint"></span></td>
 				<td><a href="${base_path}/news/${news.N_ID}">${news.N_TITLE }</a></td>
 				<td>${news.N_AUTHER }</td>
 				<td>${news.N_DATE }</td>
