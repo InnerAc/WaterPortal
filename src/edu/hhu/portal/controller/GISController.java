@@ -1,7 +1,12 @@
 package edu.hhu.portal.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.jfinal.core.Controller;
 
+import edu.hhu.portal.model.ST;
 import edu.hhu.portal.util.SSSYQUtil;
 
 public class GISController extends Controller{
@@ -15,10 +20,15 @@ public class GISController extends Controller{
 	public void sw(){
 		String stid = getPara();
 		if(hhudev){
-			renderText(stid);
+			renderText("{\"z\":\""+stid+"\",\"tm\":\"null\"}");
 			return;
 		}
-		String z = SSSYQUtil.getSWbySTID(stid);
-		renderText(z);
+		String ztm = SSSYQUtil.getSWbySTID(stid);
+		renderText(ztm);
+	}
+	
+	public void sts(){
+		List<ST> sts = ST.dao.findAll();
+		renderJson(sts);
 	}
 }

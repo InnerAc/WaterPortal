@@ -27,6 +27,7 @@ import edu.hhu.portal.model.APP;
 import edu.hhu.portal.model.DisplayModule;
 import edu.hhu.portal.model.Files;
 import edu.hhu.portal.model.News;
+import edu.hhu.portal.model.ST;
 import edu.hhu.portal.model.Service;
 import edu.hhu.portal.model.ServiceMap;
 import edu.hhu.portal.model.USER;
@@ -71,6 +72,7 @@ public class PortalConfig extends JFinalConfig{
 		arp.addMapping("WP_USER", "U_USERID",USER.class);
 		arp.addMapping("WP_SERVICEMAP", "SM_SRC",ServiceMap.class);
 		arp.addMapping("WP_SERVICE", "S_NAME",Service.class);
+		arp.addMapping("WP_ST", "ST_ID",ST.class);
 		me.add(arp);
 	}
 

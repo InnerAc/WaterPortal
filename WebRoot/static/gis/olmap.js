@@ -42,13 +42,32 @@ $(document).ready(function() {
     	  image:new ol.style.Icon({  
     	       color:'#000000',  
     	       src: base_path+'/static/image/dot.png'  
-         })});
+         }),
+         });
+      
+      function genStyle(name){
+    	return new ol.style.Style({  
+    			image:new ol.style.Icon({  
+    				color:'#000000',  
+    				src: base_path+'/static/image/dot.png'  
+    				}),
+    				fill: new ol.style.Fill({
+    		            color: 'rgba(0, 0, 255, 0.1)'
+    		        }),
+    			text: new ol.style.Text({
+    		          text: name,
+    		          fill: new ol.style.Fill({color: '#000',width:10}),
+    		          offsetY: 10,
+    		          rotation: 0,
+    		          scale:1.2
+    		          }),
+    		});
+      };
       var points = [];
       
-      list = [{id:'南京',coor:[118.46,32.03]},{id:'淮安',coor:[119.15	,33.5]},{id:'时埝',coor:[119.5, 31.5]}];
-      
+      list = [{"ST_ID":"010","ST_LGTD":"118.46","ST_NM":"南京","ST_LTTD":"32.03"},{"ST_ID":"011","ST_LGTD":"119.15","ST_NM":"淮安","ST_LTTD":"33.5"},{"ST_ID":"012","ST_LGTD":"119.5","ST_NM":"时埝","ST_LTTD":"31.5"}];
 //      $.ajax({
-//    	 url:'/SharingPlatform/data/gisST',
+//    	 url: base_path+'/gis/sts',
 //    	 async:false,
 //    	 success:function(data){
 //    		 console.log("success");
@@ -58,14 +77,15 @@ $(document).ready(function() {
       
       console.log(list);
       for(var i=0;i<list.length;i++){
-//		  coor = [parseFloat(list[i].LGTD)+0.2,parseFloat(list[i].LTTD)];
-    	  coor = list[i].coor;
+		  coor = [parseFloat(list[i].ST_LGTD)+0.2,parseFloat(list[i].ST_LTTD)];
+//    	  coor = list[i].coor;
 		  console.log(coor)
     	  var tmp = new ol.Feature({  
     	        geometry:new ol.geom.Point(ol.proj.fromLonLat(coor)),
-    	        id: list[i].id
+    	        id: list[i].ST_ID,
+    	        name: list[i].ST_NM
     	    });
-    	  tmp.setStyle(style);
+    	  tmp.setStyle(genStyle(list[i].ST_NM));
     	  points.push(tmp);
 //    	  if(i > 10)
 //    		  break;
@@ -77,7 +97,7 @@ $(document).ready(function() {
     var points = new ol.layer.Vector({  
         source: source,
         minResolution: 0,
-        maxResolution: 600
+        maxResolution: 3000
     });
     
     var layers = [
@@ -116,9 +136,16 @@ $(document).ready(function() {
     	var feature = e.target.getFeatures().getArray()[0];
     	if(feature != null){
     		var id = feature.get('id');
+    		var name = feature.get('name');
         	var coordinate = feature.getGeometry().getCoordinates();
-        	$.get(base_path+"/gis/sw/63202911",function(data){
-				str = '水位:'+data;
+        	$.get(base_path+"/gis/sw/"+id,function(data){
+            	console.log(data);
+            	data = $.parseJSON(data);
+        		str = '<h2>'+name+'</h2>';
+        		str += '<table class="table table-bordered table-hover">';
+				str += '<tr><td>时间:</td><td>'+data.tm+'</td></tr>';
+				str += '<tr><td>水位:</td><td>'+data.z+'</td></tr>';
+				str += '</table>'
 				content.innerHTML = str;
 				overlay.setPosition(coordinate);
         	});
