@@ -35,14 +35,22 @@
                 <h1>江苏省水利厅门户系统</h1>
                 <h3>Jiangsu Water Resources Portal</h3>
             </div>
-            <div id="userInfo" class="col-md-3 col-lg-3">
+            <div id="userInfo" class="col-md-3 col-lg-3" style="float:right;text-align:right;">
+            <form class="bs-example bs-example-form" role="form" method=POST action="http://127.0.0.1:8080/NewSearchUI/searchIndex" target="_blank">
+               <div class="input-group">
+                   <input type="text" name="queryword" class="form-control" placeholder="水利垂直搜索">
+                   <span class="input-group-btn">
+                       <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                   </span>
+               </div>
+		    </form>
             <c:if test="${user==null }">
-                <br><br><br>
-                <span style="float:right;cursor:pointer;" onclick="login();">登录</span>
+                <br>
+                <span style="cursor:pointer;" onclick="login();">登录</span>
             </c:if>
             <c:if test="${user!= null }">
-            	<h3 style="float:right;">${user.U_SERVICE }:${user.U_NAME }</h3><br><br> 
-            	<a style="float:right;" href="${base_path}/logout">退出</a>     	
+            	<h3 >${user.U_SERVICE }:${user.U_NAME }</h3>
+            	<a href="${base_path}/logout">退出</a>     	
             </c:if>
             </div>
         </div>
