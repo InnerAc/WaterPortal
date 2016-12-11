@@ -145,10 +145,12 @@ public class ModuleController extends Controller{
 			dmids = Service.dao.findById(serviceName).getStr("S_LIST");
 		}
 		String[] dmidlist = dmids.split(",");
+		Map<String, DisplayModule> sortMap = DisplayModule.dao.findByIds(dmids);
 		List<Object> list = new ArrayList<Object>();
 		for(String dmid : dmidlist){
 			System.out.println(dmid);
-			DisplayModule dm = DisplayModule.dao.findById(dmid);
+//			DisplayModule dm = DisplayModule.dao.findById(dmid);
+			DisplayModule dm = sortMap.get(dmid);
 			if(dm == null){
 				System.out.println(dmid+" is null");
 				continue;
