@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
 import com.jfinal.core.Controller;
 
 import edu.hhu.portal.model.DisplayModule;
@@ -150,7 +149,7 @@ public class ModuleController extends Controller{
 		for(String dmid : dmidlist){
 			System.out.println(dmid);
 //			DisplayModule dm = DisplayModule.dao.findById(dmid);
-			DisplayModule dm = sortMap.get(dmid);
+			DisplayModule dm = sortMap.getOrDefault(dmid,null);
 			if(dm == null){
 				System.out.println(dmid+" is null");
 				continue;

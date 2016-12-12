@@ -23,7 +23,7 @@ public class UserController extends Controller{
 	
 	public void addModule(){
 		String userid = getSessionAttr("userid");
-		List<DisplayModule> dms = DisplayModule.dao.findManageModules(userid);
+		List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
 		USER user = getSessionAttr(userid);
 		setAttr("dms", dms);
 		setAttr("user", user);

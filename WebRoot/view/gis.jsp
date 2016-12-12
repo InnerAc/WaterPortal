@@ -58,7 +58,7 @@ content: "✖";
 </style>
 </head>
 <body>
-<div id="mapMain" style="width:110%;">
+<div id="mapMain" style="width:100%;">
 </div>
 <div id="popup" class="ol-popup">
 	<a href="#" id="popup-closer" class="ol-popup-closer"></a>
