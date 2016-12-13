@@ -97,7 +97,7 @@
 				<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
 				<div class="form-group">
 					可查看该新闻的部门(输入部门名称使用英文逗号隔开):<br>
-					<input class="form-control" name="N_SHOWSERVICE" type="text">
+					<input class="form-control" name="N_SHOWSERVICE" type="text" value="${user.U_SERVICE },">
 				</div><br>
 				<div class="form-group">
 					可查看该新闻的用户(输入用户登录名使用英文逗号隔开):<br>

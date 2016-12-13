@@ -137,7 +137,7 @@ public class ModuleController extends Controller{
 	public void modules(){
 		String dmids = getPara();
 		String userid = getSessionAttr("userid");
-		if(userid == null){
+		if(userid == null || "youke".equals(dmids)){
 			userid = "NUL";
 			dmids = Service.dao.findById("tourist").getStr("S_LIST");
 		}

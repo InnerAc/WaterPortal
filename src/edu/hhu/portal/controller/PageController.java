@@ -15,13 +15,19 @@ import edu.hhu.portal.model.USER;
 public class PageController extends Controller{
 	public void index(){
 		String userid = getSessionAttr("userid");
-		List<APP> apps = APP.dao.findAll();
 		if(userid != null){
 			USER user = getSessionAttr(userid);
 			setAttr("user", user);
 		}
-		setAttr("apps", apps);
 		render("/view/indexNew.jsp");
+	}
+	public void tourise(){
+		String userid = getSessionAttr("userid");
+		if(userid != null){
+			USER user = getSessionAttr(userid);
+			setAttr("user", user);
+		}
+		render("/view/indexTourise.jsp");
 	}
 	public void manager(){
 		USER user = getSessionAttr("user");

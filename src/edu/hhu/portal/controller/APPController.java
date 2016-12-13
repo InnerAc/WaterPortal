@@ -28,7 +28,7 @@ public class APPController extends Controller{
 		String appides = getPara();
 		
 		String userid = getSessionAttr("userid");
-		if(userid == null){
+		if(userid == null || "youke".equals(appides)){
 			userid = "NUL";
 			appides = Service.dao.findById("tourist").getStr("S_APPS");
 		}

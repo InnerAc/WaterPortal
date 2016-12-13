@@ -68,9 +68,13 @@
 			<div>
 				<h4 class="m-t-xs">功能管理</h4>
 				<div class="doc-buttons">
+					<c:if test="${user.U_LVL > 0 }">
 					<a href="${base_path}/module/manager" class="btn btn-s-md btn-warning">展示模块管理</a>
 					<a href="${base_path}/module/issued" class="btn btn-s-md btn-primary">模块内容管理</a>
 					<a href="${base_path}/app/manager" class="btn btn-s-md btn-success">应用管理</a>
+					</c:if>
+					<a class="btn btn-s-md btn-success" href="${base_path}/user/addModule"><i class="fa fa-plus"></i><span> 订阅模块</span></a>
+					<a class="btn btn-s-md btn-danger" href="${base_path}/user/addAPP"><i class="fa fa-globe"></i><span> 应用添加</span></a>
 				</div>
 			</div>
 			<div>
