@@ -20,9 +20,9 @@ public class ServiceController extends Controller{
 	
 	public void addModule(){
 		String userid = getSessionAttr("userid");
-		List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(userid);
 		USER user = getSessionAttr("user");
 		String serviceName = user.getStr("U_SERVICE");
+		List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(serviceName);
 		Service service = Service.dao.findById(serviceName);
 		setAttr("dms", dms);
 		setAttr("user", user);

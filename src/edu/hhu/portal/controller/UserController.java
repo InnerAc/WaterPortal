@@ -23,8 +23,9 @@ public class UserController extends Controller{
 	
 	public void addModule(){
 		String userid = getSessionAttr("userid");
-		List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
-		USER user = getSessionAttr(userid);
+		USER user = getSessionAttr("user");
+		String serviceName = user.getStr("U_SERVICE");
+		List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(serviceName);
 		setAttr("dms", dms);
 		setAttr("user", user);
 		render("/view/backend/subscribeModule.jsp");

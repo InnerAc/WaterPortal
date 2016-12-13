@@ -36,9 +36,15 @@ public class CAClient {
 		}
 		String serviceName = service.getOrgUnitByLoginId(userid).getUnitName();
 		String userName = service.getUserByLoginId(userid).getUserName();
-		System.out.println("=====");
+		System.out.println(userName+" ===== "+serviceName);
+		if(serviceName.equals("综合科")){
+			serviceName = service.getOrgUnitByLoginId(userid).getUnitId();
+		}
 		USER user = USER.dao.selectById(userid);
 		serviceName = ServiceMap.dao.serviceByService(serviceName);
+		if(serviceName == null){
+			serviceName = "tourist";
+		}
 		if(user == null){
 			user = new USER();
 			user.set("U_USERID", userid);

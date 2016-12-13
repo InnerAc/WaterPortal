@@ -66,14 +66,14 @@ $(document).ready(function() {
       var points = [];
       
       list = [{"ST_ID":"010","ST_LGTD":"118.46","ST_NM":"南京","ST_LTTD":"32.03"},{"ST_ID":"011","ST_LGTD":"119.15","ST_NM":"淮安","ST_LTTD":"33.5"},{"ST_ID":"012","ST_LGTD":"119.5","ST_NM":"时埝","ST_LTTD":"31.5"}];
-//      $.ajax({
-//    	 url: base_path+'/gis/sts',
-//    	 async:false,
-//    	 success:function(data){
-//    		 console.log("success");
-//    		 list = data;
-//    	 }
-//      });
+      $.ajax({
+    	 url: base_path+'/gis/sts',
+    	 async:false,
+    	 success:function(data){
+    		 console.log("success");
+    		 list = data;
+    	 }
+      });
       
       console.log(list);
       for(var i=0;i<list.length;i++){
