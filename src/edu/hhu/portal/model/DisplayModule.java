@@ -14,8 +14,8 @@ public class DisplayModule extends Model<DisplayModule>{
 		return find("SELECT * FROM WP_DISPLAYMODULE");
 	}
 	
-	public List<DisplayModule> findManageModules(String user){
-		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_EDIT LIKE '%"+user+"%'";
+	public List<DisplayModule> findManageModules(String user,String service){
+		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_EDIT LIKE '%"+user+"%' or DM_EDIT LIKE '%"+service+"%'";
 		System.out.println(sql);
 		return find(sql);
 	}
@@ -27,6 +27,12 @@ public class DisplayModule extends Model<DisplayModule>{
 	}
 	
 	public List<DisplayModule> findServiceIssuedModules(String service){
+		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_EDIT LIKE '%"+service+"%' or DM_EDIT='水利厅'";
+		System.out.println(sql);
+		return find(sql);
+	}
+	
+	public List<DisplayModule> findServiceShowModules(String service){
 		String sql = "SELECT * FROM WP_DISPLAYMODULE WHERE DM_SHOWSERVICE LIKE '%"+service+"%' or DM_SHOWALL=1";
 		System.out.println(sql);
 		return find(sql);

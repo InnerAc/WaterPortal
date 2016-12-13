@@ -22,7 +22,7 @@ public class ServiceController extends Controller{
 		String userid = getSessionAttr("userid");
 		USER user = getSessionAttr("user");
 		String serviceName = user.getStr("U_SERVICE");
-		List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(serviceName);
+		List<DisplayModule> dms = DisplayModule.dao.findServiceShowModules(serviceName);
 		Service service = Service.dao.findById(serviceName);
 		setAttr("dms", dms);
 		setAttr("user", user);
@@ -79,6 +79,29 @@ public class ServiceController extends Controller{
 		Service service = Service.dao.findById("tourist");
 		service.set("S_APPS", list);
 		service.update();
+		setAttr("info", "修改成功");
+		setAttr("url", "/");
+		render("/view/success.jsp");
+	}
+	
+	public void update(){
+		USER user = getSessionAttr("user");
+		String serviceName = user.getStr("U_SERVICE");
+		List<USER> users = USER.dao.findByService(serviceName);
+		setAttr("user", user);
+		setAttr("users", users);
+		render("/view/backend/manageruser.jsp");
+	}
+	
+	public void updateUSER(){
+		String list = getPara("list");
+		USER user = getSessionAttr("user");
+		String[] uids = list.split(",");
+		for(String uid : uids){
+			USER use = USER.dao.findById(uid);
+			use.set("U_LVL", "1");
+			use.update();
+		}
 		setAttr("info", "修改成功");
 		setAttr("url", "/");
 		render("/view/success.jsp");

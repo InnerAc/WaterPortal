@@ -113,11 +113,11 @@
 							<option value="3" >超长(占屏幕99%)</option>
 						</select>
 					</div><br>
-					<div class="form-inline">
+					<div class="form-inline" style="display:none;">
 						模块管理员(输入用户登录名使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_EDIT" type="text" value="${userid }">
+						<input class="form-control" name="DM_EDIT" type="text" value="${user.U_SERVICE }">
 					</div><br>
-					<div class="form-inline">
+					<div class="form-inline" style="display:none;">
 						信息发布员(输入用户登录名使用英文逗号隔开):<br>
 						<input class="form-control" name="DM_ISSUED" type="text" value="${userid }">
 					</div><br>
@@ -131,7 +131,7 @@
 					<span style="color:red">如果允许所有人访问，下面的不需要填写</span><br>
 					<div class="form-group">
 						可查看该模块的部门(输入部门名称使用英文逗号隔开):<br>
-						<input class="form-control" name="DM_SHOWSERVICE" type="text" value="${dm.DM_SHOWSERVICE }">
+						<input class="form-control" name="DM_SHOWSERVICE" type="text" value="${user.U_SERVICE }">
 					</div><br>
 					<div class="form-group">
 						可查看该模块的用户(输入用户登录名使用英文逗号隔开):<br>

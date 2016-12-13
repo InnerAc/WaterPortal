@@ -107,7 +107,9 @@ public class APPController extends Controller{
 	}
 	
 	public void manager(){
-		List<APP> apps = APP.dao.findAll();
+		USER user = getSessionAttr("user");
+		String serviceName = user.getStr("U_SERVICE");
+		List<APP> apps = APP.dao.findByService(serviceName);
 		setAttr("apps", apps);
 		render("/view/backend/managerapp.jsp");
 	}

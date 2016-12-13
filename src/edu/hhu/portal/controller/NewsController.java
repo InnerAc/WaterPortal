@@ -87,7 +87,9 @@ public class NewsController extends Controller{
 			if(dm.getStr("DM_TYPE").equals("3")){
 				render("/view/backend/addPIC.jsp");
 			}else if(dm.getStr("DM_TYPE").equals("4")){
-				List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
+				USER user = getSessionAttr("user");
+				String serviceName = user.getStr("U_SERVICE");
+				List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(serviceName);
 				setAttr("mydm", dm);
 				setAttr("dms", dms);
 				render("/view/backend/editModulesssss.jsp");

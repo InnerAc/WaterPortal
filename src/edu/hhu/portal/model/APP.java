@@ -29,4 +29,8 @@ public class APP extends Model<APP>{
 		int maxId = findFirst(sql).getInt("MAX(A_ID)");
 		return maxId;
 	}
+	public List<APP> findByService(String service){
+		String sql = "SELECT * FROM WP_APP WHERE A_SERVICE LIKE '%"+service+"%'";
+		return find(sql);
+	}
 }

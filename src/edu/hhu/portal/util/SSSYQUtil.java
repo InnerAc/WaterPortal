@@ -15,11 +15,11 @@ public class SSSYQUtil {
 			z = matcher.group(1);
 		}
 		String tm = "null";
-		pattern = Pattern.compile(regexz);
+		pattern = Pattern.compile(regext);
 		matcher = pattern.matcher(s);
 		while (matcher.find()) {
 			tm = matcher.group(1);
 		}
-		return "{\"z\":\""+stid+"\",\"tm\":\""+tm+"\"}";
+		return "{\"z\":\""+z+"\",\"tm\":\""+tm+"\"}";
 	}
 }

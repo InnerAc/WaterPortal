@@ -26,8 +26,9 @@ public class ModuleController extends Controller{
 	 */
 	public void manager(){
 		String userid = getSessionAttr("userid");
-		List<DisplayModule> dms = DisplayModule.dao.findManageModules(userid);
 		USER user = getSessionAttr("user");
+		String serviceName = user.getStr("U_SERVICE");
+		List<DisplayModule> dms = DisplayModule.dao.findManageModules(userid,serviceName);
 		setAttr("dms", dms);
 		setAttr("user", user);
 		render("/view/backend/managerModule.jsp");
@@ -37,7 +38,9 @@ public class ModuleController extends Controller{
 	 */
 	public void issued(){
 		String userid = getSessionAttr("userid");
-		List<DisplayModule> dms = DisplayModule.dao.findIssuedModules(userid);
+		USER user = getSessionAttr("user");
+		String serviceName = user.getStr("U_SERVICE");
+		List<DisplayModule> dms = DisplayModule.dao.findServiceIssuedModules(serviceName);
 		setAttr("dms", dms);
 		render("/view/backend/issuedModule.jsp");
 	}

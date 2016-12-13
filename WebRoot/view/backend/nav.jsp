@@ -16,6 +16,7 @@
 		<nav class="nav-primary hidden-xs">
 			<ul class="nav">
 				<li id="l0"><a href="${base_path}/manager"><i class="fa fa-dashboard icon"><b class="bg-danger"></b></i><span>管理仪表盘</span></a></li>
+				<c:if test="${user.U_LVL > 0 }">
 				<li id="l1"><a href="#down"><i class="fa fa-columns icon"><b class="bg-warning"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>展示模块管理</span></a>
 					<ul class="nav lt">
 						<li><a href="${base_path}/module/manager"><i class="fa fa-asterisk"></i><span>模块管理</span></a></li>
@@ -29,16 +30,20 @@
 						<li><a href="${base_path}/app/add"><i class="fa fa-plus"></i><span>增加应用</span></a></li>
 					</ul>
 				</li>
+				</c:if>
 				<li id="l4"><a href="#down"><i class="fa fa-calendar icon"><b class="bg-info"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>首页个性化</span></a>
 					<ul class="nav lt">
-						<li><a href="${base_path}/user/addAPP"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
 						<li><a href="${base_path}/user/addModule"><i class="fa fa-plus"></i><span>订阅模块</span></a></li>
+						<li><a href="${base_path}/user/addAPP"><i class="fa fa-plus"></i><span>应用添加</span></a></li>
 					</ul>
 				</li>
 				<li id="l5"><a href="#down"><i class="fa fa-flag icon"><b class="bg-danger"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span><span>部门管理</span></a>
 					<ul class="nav lt">
 						<li><a href="${base_path}/service/addModule"><i class="fa fa-plus"></i><span>部门模块管理</span></a></li>
 						<li><a href="${base_path}/service/addAPP"><i class="fa fa-plus"></i><span>部门应用管理</span></a></li>
+						<c:if test="${user.U_LVL > 1 }">
+						<li><a href="${base_path}/service/update"><i class="fa fa-group"></i><span>管理部门发布员</span></a></li>
+						</c:if>
 					</ul>
 				</li>
 			</ul>

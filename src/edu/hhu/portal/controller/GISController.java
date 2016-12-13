@@ -11,7 +11,7 @@ import edu.hhu.portal.util.SSSYQUtil;
 
 public class GISController extends Controller{
 	
-	boolean hhudev = true;
+	boolean hhudev = false;
 	
 	public void index(){
 		render("/view/gis.jsp");
