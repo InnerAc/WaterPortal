@@ -68,6 +68,7 @@
     		<div id="app_queue">${user.U_APPS }</div>
     		<div id="service_name">${user.U_SERVICE }</div>
     		<div id="token">${user.U_TOKEN }</div>
+    		<div id="userid">${user.U_USERID }</div>
     	</div>
     	</div>
     </body>

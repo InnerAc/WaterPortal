@@ -23,11 +23,11 @@ function genModule(module){
 	dmodule = '';
 	dmodule += '<div class="col-md-'+size+' col-lg-'+size+' col-sm-12"><div class="module" id="'+dm.DM_ID+'"><div class="mheader1">';
 	dmodule += dm.DM_NAME;
-	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>';
+	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>';
 	if(dm.DM_TYPE == '1'){//是列表新闻
-		dmodule = dmodule.substring(0,dmodule.length-161);
+		dmodule = dmodule.substring(0,dmodule.length-111);
 		dmodule += '<a href="'+base_path+'/news/list/'+dm.DM_ID+'" style="color:#fff;"><span class="glyphicon glyphicon-align-justify"></span></a>\n';
-		dmodule += '<span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-refresh"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>'
+		dmodule += '<span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>'
 		dmodule += '<div class="mbody">';
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;
@@ -111,12 +111,13 @@ function genAPPS(){
 	username = encodeURI(encodeURI($('#service_name').html()));
 	token = $('#token').html();
 	app_ids = $('#app_queue').html();
+	userid = $('#userid').html();
 	$.get(base_path+'/app/list/'+app_ids,function(data){
 		appshtml = '';
 		nn = data.length;
 		for(j =0;j<nn;j++){
 			app = data[j];
-			appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?token='+token+'&username='+username+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?hp_t='+token+'&username='+username+'&currentLoginName='+userid+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();
