@@ -69,7 +69,7 @@
 			<div>
 				<div style="margin-bottom:5px;">
 					<button class="btn btn-s-md btn-success" onclick="service_save();">保存配置</button>
-					<button class="btn btn-s-md btn-success" onclick="tourist_save();">保存游客配置</button>
+					<!-- <button class="btn btn-s-md btn-success" onclick="tourist_save();">保存游客配置</button> -->
 					<br>
 				</div>
 				<section class="panel panel-default">

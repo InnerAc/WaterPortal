@@ -50,7 +50,7 @@
             </c:if>
             <c:if test="${user!= null }">
             	<h3 >${user.U_SERVICE }:${user.U_NAME }</h3>
-            	<a href="${base_path}">主页</a>
+            	<a href="${base_path}/">主页</a>
             	<a href="${base_path}/logout">退出</a>     	
             </c:if>
             </div>
@@ -68,6 +68,7 @@
     		<div id="app_queue">youke</div>
     		<div id="service_name">${user.U_SERVICE }</div>
     		<div id="token">${user.U_TOKEN }</div>
+    		<div id="userid">${user.U_USERID }</div>
     	</div>
     	</div>
     </body>
