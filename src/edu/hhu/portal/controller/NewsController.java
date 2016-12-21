@@ -94,9 +94,7 @@ public class NewsController extends Controller{
 				setAttr("dms", dms);
 				render("/view/backend/editModulesssss.jsp");
 			}else if(dm.getStr("DM_TYPE").equals("5")){
-				setAttr("info", "该模块不允许修改");
-				setAttr("url", "/module/issued");
-				render("/view/success.jsp");
+				render("/view/backend/addiframe.jsp");
 			}else{
 				render("/view/backend/addNews.jsp");
 			}
@@ -170,7 +168,9 @@ public class NewsController extends Controller{
 				setAttr("mydm", dm);
 				setAttr("dms", dms);
 				render("/view/backend/editModulesssss.jsp");
-			} else{
+			} else if(dm.getStr("DM_TYPE").equals("5")){
+				render("/view/backend/editiframe.jsp");
+			}else {
 				render("/view/backend/editNews.jsp");
 			}
 		}

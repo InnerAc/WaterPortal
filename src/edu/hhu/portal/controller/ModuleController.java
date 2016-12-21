@@ -18,7 +18,7 @@ public class ModuleController extends Controller{
 	 * 得到该用户可以订阅的所有模块<br>
 	 * @JSON 模块list
 	 */
-	public void list(){
+	public void list(){	
 	}
 	
 	/**

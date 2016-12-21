@@ -84,6 +84,7 @@
 				<h4 class="m-t-xs">部门切换</h4>
 				<form action="${base_path }/user/manager" action=POST>
 					<select name="bumen">
+						<option value="水利厅">水利厅</option>
 						<option value="水文局">水文局</option>
 						<option value="tourist">tourist</option>
 						<option value="河海大学">河海大学</option>
@@ -112,6 +113,7 @@
 				<h4 class="m-t-xs">部门切换</h4>
 				<form action="${base_path }/user/manager" action=POST>
 					<select name="bumen">
+						<option value="水利厅">水利厅</option>
 						<option value="水文局">水文局</option>
 						<option value="tourist">tourist</option>
 						<option value="河海大学">河海大学</option>

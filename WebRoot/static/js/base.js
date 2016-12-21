@@ -1,2 +1,2 @@
-base_path = "/WaterPortal";
-//base_path = "";
+//base_path = "/WaterPortal";
+base_path = "";

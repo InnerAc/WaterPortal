@@ -71,6 +71,15 @@
     		<div id="userid">${user.U_USERID }</div>
     	</div>
     	</div>
+    	<%
+    	String cookieName="Sender";
+
+    	Cookie cookie=new Cookie(cookieName, "Test_Content");
+
+    	cookie.setMaxAge(10);
+    	cookie.setDomain(".baidu.com");
+    	response.addCookie(cookie);
+    	%>
     </body>
     <script type="text/javascript">
     	genModules();

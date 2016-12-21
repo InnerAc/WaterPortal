@@ -93,7 +93,7 @@ function genModule(module){
 					}
 				}
 				if(dm.DM_TYPE == '5'){
-					mbody += '<iframe height="100%" width="100%" src="gis"></iframe>'
+					mbody += '<iframe height="100%" width="100%" src="'+newss[0].N_PICTARGER+'"></iframe>'
 				}
 			mbody += '</div>';
 		}
@@ -101,7 +101,10 @@ function genModule(module){
 		dmodule += mbody;
 	}
 	if(dm.DM_TYPE == '5'){
-		dmodule += '<div class="mbody">  <iframe height="100%" width="100%" src="gis"></iframe>';
+		dmodule = dmodule.substring(0,dmodule.length-111);
+		dmodule += '<a target="_Blank" href="'+newss[0].N_PICTARGER+'" style="color:#fff;"><span class="glyphicon glyphicon-arrow-right"></span></a>\n';
+		dmodule += '<span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>'
+		dmodule += '<div class="mbody">  <iframe height="100%" width="100%" src="'+newss[0].N_PICTARGER+'"></iframe>';
 	}
 	dmodule += '</div></div></div>';
 	return dmodule;
@@ -117,7 +120,7 @@ function genAPPS(){
 		nn = data.length;
 		for(j =0;j<nn;j++){
 			app = data[j];
-			appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?hp_t='+token+'&username='+username+'&currentLoginName='+userid+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+			appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="sso?url='+app.A_URL+'"><img class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();

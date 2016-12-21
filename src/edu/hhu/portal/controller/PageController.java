@@ -5,6 +5,9 @@ import java.util.List;
 
 
 
+
+import org.springframework.web.util.CookieGenerator;
+
 import kjoms.udcs.bean.CAClient;
 
 import com.jfinal.core.Controller;
@@ -57,5 +60,21 @@ public class PageController extends Controller{
 		removeSessionAttr("userid");
 		removeSessionAttr("user");
 		render("/view/toindex.jsp");
+	}
+	public void sso(){
+		String url = getPara("url");
+		System.out.println(url);
+		String userid = getSessionAttr("userid");
+		if(userid != null){
+			USER user = getSessionAttr("user");
+			CookieGenerator generator = new CookieGenerator();
+			String token = user.getStr("U_TOKEN");
+			generator.setCookieName("hp_t");
+	        generator.addCookie(getResponse(), token);
+	        generator.setCookieName("currentLoginName");
+	        generator.addCookie(getResponse(), userid);
+	        getResponse().addHeader("Access-Control-Allow-Origin", "*");
+			redirect(url);
+		}
 	}
 }
