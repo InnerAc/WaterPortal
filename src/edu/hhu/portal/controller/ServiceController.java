@@ -90,7 +90,17 @@ public class ServiceController extends Controller{
 		List<USER> users = USER.dao.findByService(serviceName);
 		setAttr("user", user);
 		setAttr("users", users);
-		render("/view/backend/manageruser.jsp");
+//		render("/view/backend/manageruser.jsp");
+		render("/view/backend/manageruserb.jsp");
+	}
+	public void updates(){
+		USER user = getSessionAttr("user");
+		String bumen = getPara("bumen");
+		List<USER> users = USER.dao.findByService(bumen);
+		setAttr("user", user);
+		setAttr("users", users);
+		setAttr("bumen", bumen);
+		render("/view/backend/managerusers.jsp");
 	}
 	
 	public void updateUSER(){
@@ -105,5 +115,14 @@ public class ServiceController extends Controller{
 		setAttr("info", "修改成功");
 		setAttr("url", "/");
 		render("/view/success.jsp");
+	}
+	
+	public void updown(){
+		String uid = getPara(0);
+		String lvl = getPara(1);
+		USER user = USER.dao.findById(uid);
+		user.set("U_LVL", lvl);
+		user.update();
+		renderText("yes");
 	}
 }

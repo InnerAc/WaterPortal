@@ -26,13 +26,13 @@ function genModule(module){
 	dmodule += '<div style="float:right;"><span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>';
 	if(dm.DM_TYPE == '1'){//是列表新闻
 		dmodule = dmodule.substring(0,dmodule.length-111);
-		dmodule += '<a href="'+base_path+'/news/list/'+dm.DM_ID+'" style="color:#fff;"><span class="glyphicon glyphicon-align-justify"></span></a>\n';
+		dmodule += '<a target="_Blank" href="'+base_path+'/news/list/'+dm.DM_ID+'" style="color:#fff;"><span class="glyphicon glyphicon-align-justify"></span></a>\n';
 		dmodule += '<span class="glyphicon glyphicon-move"></span>\n<span class="glyphicon glyphicon-chevron-up"></span></div></div>'
 		dmodule += '<div class="mbody">';
 		mbody = '<table class="table table-condensed table-hover"><tbody>';
 		n = newss.length;
 		for(i=0;i<n;i++){
-			mbody +='<tr><td  width="75%"><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
+			mbody +='<tr><td  width="75%"><a target="_Blank" href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
 		}
 		mbody += '</tbody></table>';
 		dmodule += mbody;
@@ -49,7 +49,7 @@ function genModule(module){
 	if(dm.DM_TYPE == '3'){
 		dmodule += '<div class="mbody">';
 		if(newss.length > 0){
-			dmodule += '<a href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
+			dmodule += '<a target="_Blank" href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
 		}else{
 			dmodule += '暂无公告';
 		}
@@ -71,9 +71,9 @@ function genModule(module){
 				if(dm.DM_TYPE == '1'){//是列表新闻
 					mbody += '<table class="table table-condensed table-hover"><tbody>';
 					n = newss.length;
-					mbody += '<tr><td width="75%"></td><td style="float:right"><a href="'+base_path+'/news/list/'+dm.DM_ID+'">更多>></a></td></tr>'
+					mbody += '<tr><td width="75%"></td><td style="float:right"><a target="_Blank" href="'+base_path+'/news/list/'+dm.DM_ID+'">更多>></a></td></tr>'
 					for(i=0;i<n;i++){
-						mbody +='<tr><td><a href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
+						mbody +='<tr><td><a target="_Blank" href="'+base_path+'/news/'+newss[i].N_ID+'">'+newss[i].N_TITLE+'</td><td>'+newss[i].N_DATE+'</td></tr>';
 					}
 					mbody += '</tbody></table>';
 				}
@@ -87,7 +87,7 @@ function genModule(module){
 				}
 				if(dm.DM_TYPE == '3'){
 					if(newss.length > 0){
-						mbody += '<a href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
+						mbody += '<a target="_Blank" href="'+newss[0].N_PICTARGER+'"><img class="img-responsive" alt="'+newss[0].N_TITLE+'" src="'+base_path+'/static/image/'+newss[0].N_PICSRC+'"</img></a>';
 					}else{
 						mbody += '暂无公告';
 					}

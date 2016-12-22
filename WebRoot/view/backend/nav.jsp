@@ -45,6 +45,9 @@
 						<c:if test="${user.U_LVL > 1 }">
 						<li><a href="${base_path}/service/update"><i class="fa fa-group"></i><span>管理部门发布员</span></a></li>
 						</c:if>
+						<c:if test="${user.U_LVL > 2 }">
+						<li><a href="${base_path}/service/updates"><i class="fa fa-group"></i><span>管理部门管理员</span></a></li>
+						</c:if>
 					</ul>
 				</li>
 				</c:if>
