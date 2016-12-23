@@ -13,6 +13,9 @@
 <link rel="stylesheet" type="text/css" href="${base_path}/static/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="${base_path}/static/css/summernote.css" />
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
+<script src="${base_path}/static/js/bootstrap.min.js"></script>
+<script src="${base_path}/static/js/summernote.min.js"></script>
 </head>
 <body>
 <section class="vbox">

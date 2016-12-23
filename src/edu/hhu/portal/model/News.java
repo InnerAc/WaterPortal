@@ -27,8 +27,8 @@ public class News extends Model<News>{
 		return newss;
 	}
 	
-	public List<News> findByDMID(String dmid,String userid){
-		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"' AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%')");
+	public List<News> findByDMID(String dmid,String userid,String service){
+		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"' AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%' OR N_SHOWSERVICE LIKE'%"+service+"%') ORDER BY N_DATE DESC");
 		for(News news : newss){
 			String time = news.getStr("N_DATE");
 			time = DateUtil.unixTime2Date(time);
@@ -37,8 +37,8 @@ public class News extends Model<News>{
 		return newss;
 	}
 	
-	public List<News> findByDMID(String dmid,String num,String userid){
-		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"'AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%') ORDER BY N_DATE DESC limit 0,"+num);
+	public List<News> findByDMID(String dmid,String num,String userid,String service){
+		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"'AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%' OR N_SHOWSERVICE LIKE'%"+service+"%') ORDER BY N_DATE DESC limit 0,"+num);
 		for(News news : newss){
 			String time = news.getStr("N_DATE");
 			time = DateUtil.unixTime2Date(time);
@@ -47,8 +47,8 @@ public class News extends Model<News>{
 		return newss;
 	}
 	
-	public List<News> findByDMID(String dmid, int num,String userid){
-		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"'AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%') ORDER BY N_DATE DESC limit 0,"+num);
+	public List<News> findByDMID(String dmid, int num,String userid,String service){
+		List<News> newss = find("SELECT * From WP_NEWS where N_DMID='"+dmid+"'AND (N_SHOWALL='1' OR N_SHOWUSER LIKE'%"+userid+"%' OR N_SHOWSERVICE LIKE'%"+service+"%') ORDER BY N_DATE DESC limit 0,"+num);
 		for(News news : newss){
 			String time = news.getStr("N_DATE");
 			System.out.println(time);

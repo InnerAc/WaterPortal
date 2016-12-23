@@ -31,10 +31,13 @@ public class NewsController extends Controller{
 	public void list(){
 		String dmid = getPara();
 		String userid = getSessionAttr("userid");
+		String service = null;
 		if(userid == null){
 			userid = "NUL";
+		}else{
+			service = USER.dao.findById(userid).getStr("U_SERVICE");
 		}
-		List<News> newss = News.dao.findByDMID(dmid, userid);
+		List<News> newss = News.dao.findByDMID(dmid, userid,service);
 		DisplayModule dm = DisplayModule.dao.findById(dmid);
 		setAttr("dm", dm);
 		setAttr("newss", newss);
@@ -49,10 +52,13 @@ public class NewsController extends Controller{
 	public void manager(){
 		String dmid = getPara();
 		String userid = getSessionAttr("userid");
+		String service = null;
 		if(userid == null){
 			userid = "NUL";
+		}else{
+			service = USER.dao.findById(userid).getStr("U_SERVICE");
 		}
-		List<News> newss = News.dao.findByDMID(dmid,userid);
+		List<News> newss = News.dao.findByDMID(dmid,userid,service);
 		USER user = getSessionAttr("user");
 		setAttr("dmid", dmid);
 		setAttr("newss", newss);
@@ -107,6 +113,34 @@ public class NewsController extends Controller{
 			String nid = Long.toString(id);
 			news.set("N_ID", nid);
 			news.set("N_DATE", date);
+			if(news.save()){
+				setAttr("info", "新闻发布成功");
+				setAttr("url", "/module/issued");
+				render("/view/success.jsp");
+			}
+		}
+	}
+	
+	public void addf(){
+		if(getRequest().getMethod().equals("POST")){
+			UploadFile files = getFile("file","../static/file");
+			String fileName = files.getFileName();
+			
+			News news = new News();
+			long time = new Date().getTime();
+			long id = time%1000000000;
+			String date = Long.toString(time);
+			String nid = Long.toString(id);
+			news.set("N_ID", nid);
+			news.set("N_DATE", date);			
+			news.set("N_PICSRC", fileName);
+			news.set("N_TITLE", getPara("N_TITLE"));
+			news.set("N_AUTHOR", getPara("N_AUTHOR"));
+			news.set("N_DMID", getPara("N_DMID"));
+			news.set("N_CONTENT", getPara("N_CONTENT"));
+			news.set("N_SHOWALL", getPara("N_SHOWALL"));
+			news.set("N_SHOWSERVICE", getPara("N_SHOWSERVICE"));
+			news.set("N_SHOWUSER", getPara("N_SHOWUSER"));
 			if(news.save()){
 				setAttr("info", "新闻发布成功");
 				setAttr("url", "/module/issued");

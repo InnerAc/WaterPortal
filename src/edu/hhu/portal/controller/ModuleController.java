@@ -117,11 +117,14 @@ public class ModuleController extends Controller{
 	public void module(){
 		String dmid = getPara();
 		String userid = getSessionAttr("userid");
+		String service = "null";
 		if(userid == null){
 			userid = "NUL";
+		}else {
+			service = USER.dao.findById(userid).getStr("U_SERVICE");
 		}
 		DisplayModule dm = DisplayModule.dao.findById(dmid);
-		List<News> newss = News.dao.findByDMID(dmid, 3,userid);
+		List<News> newss = News.dao.findByDMID(dmid, 7,userid,service);
 		Map<String, Object> res = new HashMap<String, Object>();
 		res.put("dm", dm);
 		res.put("newss", newss);
@@ -137,6 +140,10 @@ public class ModuleController extends Controller{
 	public void modules(){
 		String dmids = getPara();
 		String userid = getSessionAttr("userid");
+		String service = "null";
+		if(userid != null){
+			service = USER.dao.findById(userid).getStr("U_SERVICE");
+		}
 		if(userid == null || "youke".equals(dmids)){
 			userid = "NUL";
 			dmids = Service.dao.findById("tourist").getStr("S_LIST");
@@ -169,7 +176,7 @@ public class ModuleController extends Controller{
 						if(idm == null){
 							continue;
 						}
-						List<News> inewss = News.dao.findByDMID(dmli, 5,userid);
+						List<News> inewss = News.dao.findByDMID(dmli, 5,userid,service);
 						ires.put("dm", idm);
 						ires.put("newss", inewss);
 						idms.add(ires);
@@ -178,7 +185,7 @@ public class ModuleController extends Controller{
 					res.put("dms", idms);
 				}
 			}else{
-				List<News> newss = News.dao.findByDMID(dmid, 7,userid);
+				List<News> newss = News.dao.findByDMID(dmid, 7,userid,service);
 				res.put("dm", dm);
 				res.put("newss", newss);
 			}

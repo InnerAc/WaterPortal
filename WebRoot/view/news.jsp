@@ -19,6 +19,14 @@
 	<div>
 		${news.N_CONTENT }
 	</div>
+	<div>
+		<c:if test="${news.N_PICSRC != null}">
+		<br>
+		<br>
+		<hr style="border-color:#000; border-top:dotted " />
+			附件：<a target="_Blank" href="${base_path }/file?file=${news.N_PICSRC}">${news.N_PICSRC}</a>
+		</c:if>
+	</div>
 	<%@include file="footer.jsp" %>
 	</div>
 </body>

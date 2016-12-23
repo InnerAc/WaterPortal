@@ -12,6 +12,9 @@
 <script src="${base_path}/static/js/base.js" ></script>
 <link rel="stylesheet" type="text/css" href="${base_path}/static/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="${base_path}/static/css/summernote.css" />
+<script src="${base_path}/static/js/jquery-2.1.4.js"></script>
+<script src="${base_path}/static/js/bootstrap.min.js"></script>
+<script src="${base_path}/static/js/summernote.min.js"></script>
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
@@ -87,6 +90,10 @@
 					<textarea style="display:none" id="contents" name="N_CONTENT"></textarea >
 					<div id="editor"></div>
 				</div><br>
+				<div id="upfilediv" class="input-group">
+					<a id="upfilebtn" class="btn btn-info btn-sm" onclick="activeFile();">上传文件</a>
+					<br>
+				</div><br>
 				<div class="input-group">
 					允许所有人查看:
 					<select class="form-control" name="N_SHOWALL">
@@ -128,6 +135,26 @@ function submits(){
 	$('#form').submit();
 }
 $("#l2").attr('class','active');
+
+function activeFile(){
+	form = $('#form');
+	form.attr('enctype','multipart/form-data');
+	form.attr('action','${base_path}/news/addf');
+	$('#upfilediv').append('<input type="file" id="file" name="file"></input>');
+	$('#file').click();
+	btn = $('#upfilebtn');
+	btn.attr('onclick','unactiveFile();');
+	btn.html('取消上传');
+}
+function unactiveFile(){
+	form = $('#form');
+	form.removeAttr('enctype');
+	form.attr('action','${base_path}/news/add');
+	$('#file').remove();
+	btn = $('#upfilebtn');
+	btn.attr('onclick','activeFile();');
+	btn.html('上传文件');
+}
 </script>
 </body>
 </html>
