@@ -62,7 +62,7 @@ public class PageController extends Controller{
 		render("/view/toindex.jsp");
 	}
 	public void sso(){
-		String url = getPara("url");
+		String url = getPara("rurl");
 		System.out.println(url);
 		String userid = getSessionAttr("userid");
 		if(userid != null){
