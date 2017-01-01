@@ -16,6 +16,7 @@
         <script src="${base_path}/static/js/myjs/portals.js" ></script>
         <script src="${base_path}/static/js/myjs/index.js" ></script>
         <script src="${base_path}/static/js/myjs/classie.js" ></script>
+        <script src="${base_path}/static/js/bootstrap-carousel.js" ></script>
         
 	</head>
     <body>
@@ -26,6 +27,9 @@
 	        <span style="font-size:25px;float:right;cursor:pointer;" class="glyphicon glyphicon-forward" id="disRight"></span> 
 	        <a href="${base_path}/manager">管理</a>
 	    	<a style="cursor:pointer;" onclick="saveList();">保存当前布局</a>
+	    	<c:if test="${user.U_LVL > 0 }">
+	    	<a style="cursor:pointer;" onclick="saveService();">保存当前布局为部门布局</a>
+	    	</c:if>
 	    </div>
         <div class="header row">
             <div class="col-md-1 col-lg-1">
@@ -50,7 +54,7 @@
             </c:if>
             <c:if test="${user!= null }">
             	<h3 >${user.U_SERVICE }:${user.U_NAME }</h3>
-            	<a href="${base_path}/tourise">游客界面</a>
+            	<a href="${base_path}/tourise">首页</a>
             	<a href="${base_path}/logout">退出</a>     	
             </c:if>
             </div>

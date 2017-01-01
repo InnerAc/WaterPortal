@@ -16,6 +16,7 @@
         <script src="${base_path}/static/js/myjs/portals.js" ></script>
         <script src="${base_path}/static/js/myjs/index.js" ></script>
         <script src="${base_path}/static/js/myjs/classie.js" ></script>
+        <script src="${base_path}/static/js/bootstrap-carousel.js" ></script>
         
 	</head>
     <body>
@@ -50,7 +51,7 @@
             </c:if>
             <c:if test="${user!= null }">
             	<h3 >${user.U_SERVICE }:${user.U_NAME }</h3>
-            	<a href="${base_path}/">主页</a>
+            	<a href="${base_path}/">个人主页</a>
             	<a href="${base_path}/logout">退出</a>     	
             </c:if>
             </div>

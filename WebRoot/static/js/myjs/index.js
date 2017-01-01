@@ -17,5 +17,51 @@ function saveList(){
 		}
 	}
 	console.log(newlist);
+
+	apps_div = $('#apps');
+	alist = apps_div.find('img')
+	n = alist.length;
+	newalist = '';
+	for(i=0;i<n;i++){
+		if(i == 0){
+			newalist += $(alist[i]).attr('id');		
+		}
+		else{
+			newalist += ','+$(alist[i]).attr('id');
+		}
+	}
+	console.log(newalist);
 	$.post(base_path+'/user/updateList/',{list:newlist});
+	$.post(base_path+'/user/updateAPP/',{list:newalist});
+}
+function saveService(){
+	modules_div = $('#show_modules');
+	list = modules_div.find('.module');
+	n = list.length;
+	newlist = '';
+	for(i=0;i<n;i++){
+		if(i == 0){
+			newlist += $(list[i]).attr('id');		
+		}
+		else{
+			newlist += ','+$(list[i]).attr('id');
+		}
+	}
+	console.log(newlist);
+
+	apps_div = $('#apps');
+	alist = apps_div.find('img')
+	n = alist.length;
+	newalist = '';
+	for(i=0;i<n;i++){
+		if(i == 0){
+			newalist += $(alist[i]).attr('id');		
+		}
+		else{
+			newalist += ','+$(alist[i]).attr('id');
+		}
+	}
+	console.log(newalist);
+	$.post(base_path+'/service/updateList/',{list:newlist});
+	$.post(base_path+'/service/updateAPP/',{list:newalist});
 }
