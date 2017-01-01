@@ -77,7 +77,7 @@ $(document).ready(function() {
       
       console.log(list);
       for(var i=0;i<list.length;i++){
-		  coor = [parseFloat(list[i].ST_LGTD)+0.2,parseFloat(list[i].ST_LTTD)];
+		  coor = [parseFloat(list[i].ST_LGTD),parseFloat(list[i].ST_LTTD)];
 //    	  coor = list[i].coor;
 		  console.log(coor)
     	  var tmp = new ol.Feature({  
@@ -141,11 +141,15 @@ $(document).ready(function() {
         	$.get(base_path+"/gis/sw/"+id,function(data){
             	console.log(data);
             	data = $.parseJSON(data);
-        		str = '<h2>'+name+'</h2>';
-        		str += '<table class="table table-bordered table-hover">';
-				str += '<tr><td>时间:</td><td>'+data.tm+'</td></tr>';
-				str += '<tr><td>水位:</td><td>'+data.z+'</td></tr>';
-				str += '</table>'
+            	if(data.tm != 'null'){
+            		time = data.tm.split('T');
+            		data.tm = time[0];
+            		time2 = time[1].split(':');
+            		data.tm += ' '+time2[0]+':'+time2[1];
+            	}
+        		str = '<h4>'+name+'</h4>';
+				str += data.tm+'<br>';
+				str += '<a style="color:blue">水位:</a>'+data.z;
 				content.innerHTML = str;
 				overlay.setPosition(coordinate);
         	});
