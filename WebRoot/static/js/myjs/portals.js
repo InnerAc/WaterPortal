@@ -58,7 +58,7 @@ function genModule(module){
 		dmodule += '<div class="mbody">';
 		if(newss.length > 0){
 			n = newss.length;
-			dmodule += '<div id="pic'+dm.DM_ID+'" class="carousel slide"  data-ride="carousel" data-interval="1500" data-wrap="true"><div class="carousel-inner">';
+			dmodule += '<div id="pic'+dm.DM_ID+'" class="carousel slide"  data-ride="carousel" data-interval="1000" data-wrap="true"><div class="carousel-inner">';
 			for(i=0;i<n;i++){
 				if(i == 0){
 					dmodule += '<div class="active item">';

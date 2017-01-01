@@ -17,7 +17,7 @@
         <script src="${base_path}/static/js/myjs/index.js" ></script>
         <script src="${base_path}/static/js/myjs/classie.js" ></script>
         <script src="${base_path}/static/js/bootstrap-carousel.js" ></script>
-        
+     
 	</head>
     <body>
     	<div style="position:fixed;top:0;right:0.5%;cursor:pointer;font-size:25px;" id="showRight"> 
