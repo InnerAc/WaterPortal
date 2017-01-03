@@ -151,15 +151,16 @@ function genAPPS(){
 		for(j =0;j<nn;j++){
 			app = data[j];
 			if(app.A_ID == '19'){
-				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?username='+username+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?username='+username+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 			}else if(app.A_ID == '21'){
-				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'/caLoginElse?hpToken='+token+'&currentLoginName='+userid+'&url='+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'/caLoginElse?hpToken='+token+'&currentLoginName='+userid+'&url='+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 			}else{
-				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 			}
 		}
 		$('#apps').html(appshtml);
 		$('#apps').sortable();
 		$('#apps').disableSelection();
+		$('.img-circle').css('height',$('.img-circle').css('width'));
 	});
 }
