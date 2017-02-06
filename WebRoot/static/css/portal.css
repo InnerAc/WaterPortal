@@ -76,8 +76,12 @@ td{
 	padding: 2%;
 	/*background-color: #DDD;*/
 	border-radius: 0 0 5px 5px;
-	overflow: hidden; 
-	height: 250px;
+	/*overflow: hidden; */
+	height: 260px;
+	overflow :yes;
+	overflow :auto;
+	overflow-y :yes;
+	
 }
 .module > .mbody2{
 	border-style: solid none none none;
