@@ -58,7 +58,7 @@ function genModule(module){
 		dmodule += '<div class="mbody">';
 		if(newss.length > 0){
 			n = newss.length;
-			dmodule += '<div id="pic'+dm.DM_ID+'" class="carousel slide"  data-ride="carousel" data-interval="1500" data-wrap="true"><div class="carousel-inner">';
+			dmodule += '<div id="pic'+dm.DM_ID+'" class="carousel slide"  data-ride="carousel" data-interval="1000" data-wrap="true"><div class="carousel-inner">';
 			for(i=0;i<n;i++){
 				if(i == 0){
 					dmodule += '<div class="active item">';
@@ -155,7 +155,7 @@ function genAPPS(){
 			}else if(app.A_ID == '21'){
 				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'/caLoginElse?hpToken='+token+'&currentLoginName='+userid+'&url='+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 			}else{
-				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
+				appshtml += '<div class="col-md-1 col-sm-3"><center><a target="_Blank" href="'+app.A_URL+'?token='+token+'&loginid='+userid+'"><img id="'+app.A_ID+'" class="img-responsive img-circle" style="width:100%;margin-bottom:5%;" alt="'+app.A_NAME+'" src="'+base_path+'/static/icon/'+app.A_ICON+'"/><span>'+app.A_NAME+'</span></a></center></div>';
 			}
 		}
 		$('#apps').html(appshtml);

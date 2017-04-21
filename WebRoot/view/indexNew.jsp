@@ -17,7 +17,7 @@
         <script src="${base_path}/static/js/myjs/index.js" ></script>
         <script src="${base_path}/static/js/myjs/classie.js" ></script>
         <script src="${base_path}/static/js/bootstrap-carousel.js" ></script>
-        
+     
 	</head>
     <body>
     	<div style="position:fixed;top:0;right:0.5%;cursor:pointer;font-size:25px;" id="showRight"> 
@@ -40,7 +40,7 @@
                 <h3>Jiangsu Water Resources Portal</h3>
             </div>
             <div id="userInfo" class="col-md-3 col-lg-3" style="float:right;text-align:right;">
-            <form class="bs-example bs-example-form" role="form" method=POST action="http://127.0.0.1:8080/NewSearchUI/searchIndex" target="_blank">
+            <form class="bs-example bs-example-form" role="form" method=POST action="http://10.32.1.88:8080/NewSearchUI/searchIndex" target="_blank">
                <div class="input-group">
                    <input type="text" name="queryword" class="form-control" placeholder="水利垂直搜索">
                    <span class="input-group-btn">

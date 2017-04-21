@@ -18,12 +18,17 @@ position: absolute;
 background-color: white;
 -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
 filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-padding: 15px;
+padding: 3px;
 border-radius: 10px;
 border: 1px solid #cccccc;
 bottom: 12px;
 left: -50px;
-min-width: 140px;
+min-width: 200px;
+color:#000;
+filter:alpha(opacity=50);  
+-moz-opacity:0.8;  
+-khtml-opacity: 0.8;  
+opacity: 0.8;  
 }
 .ol-popup:after, .ol-popup:before {
 top: 100%;
